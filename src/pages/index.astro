@@ -1,159 +1,187 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+
+const tracks = [
+  {
+    label: 'Practice 01',
+    audience: 'For businesses',
+    title: 'Product Development',
+    summary: 'Web applications, APIs, cloud infrastructure, DevOps automation and AI integrations built by practising engineers.',
+    points: ['Discovery to deployment', 'Clear milestones and ownership', 'Secure, maintainable code'],
+    href: `${base}software-development/`,
+    cta: 'Explore product development',
+    tone: 'dev',
+  },
+  {
+    label: 'Practice 02',
+    audience: 'For learners',
+    title: 'IT Training',
+    summary: 'Live instructor-led courses with hands-on labs, real projects, internships and placement support for real roles.',
+    points: ['Weekday and weekend batches', 'Projects you can show', 'Placement and hiring mentor'],
+    href: `${base}courses/`,
+    cta: 'Explore IT training',
+    tone: 'training',
+  },
+];
+
+const devFlow = [
+  { no: '01', title: 'Discover', text: 'Goals, users, constraints and success criteria.' },
+  { no: '02', title: 'Design', text: 'Architecture, wireframes and a milestone plan.' },
+  { no: '03', title: 'Build', text: 'Agile sprints with reviews, tests and updates.' },
+  { no: '04', title: 'Launch', text: 'Deployment, monitoring and future enhancements.' },
+];
+
+const trainingFlow = [
+  { no: '01', title: 'Counselling', text: 'Choose the right track for your goal.' },
+  { no: '02', title: 'Live labs', text: 'Work with mentors, not passive videos.' },
+  { no: '03', title: 'Capstone', text: 'Build and present a real project.' },
+  { no: '04', title: 'Placement', text: 'Profile, mocks and application tracking.' },
+];
+
+const proof = [
+  { label: 'Engineering standard', title: 'Production-first thinking', text: 'Software is designed for security, maintainability and clear documentation from day one.' },
+  { label: 'Learning standard', title: 'Project-first teaching', text: 'Learners build dashboards, deployments and intelligent assistants instead of only watching lectures.' },
+  { label: 'Outcome standard', title: 'Support after delivery', text: 'Clients get a support path; learners get a hiring mentor and a practical 90-day plan.' },
+];
+
 const batches = [
   { name: 'AWS Architect', date: '25 Nov', mode: 'Weekdays', seats: '4 seats left' },
   { name: 'Data Science', date: '02 Dec', mode: 'Weekends', seats: '6 seats left' },
   { name: 'DevOps Master', date: '09 Dec', mode: 'Weekdays', seats: 'New batch' },
 ];
-const reasons = [
-  ['Live & Interactive', 'Ask doubts live and collaborate with mentors and peers in real time.'],
-  ['Project-First', 'Ship apps, dashboards and deployments you can show in interviews.'],
-  ['Industry Experts', 'Learn from working professionals with real-world delivery experience.'],
-  ['Small Cohorts', 'Dedicated mentor attention and accountability throughout the course.'],
-  ['Flexible Schedules', 'Weekday and weekend batches designed around your routine.'],
-  ['Placement Support', 'A hiring mentor helps with your profile, interviews and applications.'],
-];
-const labs = [
-  ['Generative AI Bot', 'RAG chatbot over company PDFs using OpenAI, LangChain and vector databases.'],
-  ['Serverless Neo-Bank', 'Event-driven banking backend with AWS Lambda and DynamoDB streams.'],
-  ['GitOps K8s Cluster', 'Automated pipeline from GitHub push to zero-downtime Kubernetes deployment.'],
-  ['SOC Threat Hunter', 'Live dashboard detecting SQL injection, DDoS and unauthorised access.'],
-];
+
 const studies = [
   ['Operations dashboard', 'Workflow, role-based access and reporting built as a phased release.'],
   ['Document assistant', 'RAG assistant over PDFs with citations and access control.'],
   ['Pipeline modernisation', 'Containers, automated tests and repeatable deployments.'],
 ];
 ---
-<BaseLayout>
-  <section class="hero">
-    <div class="container">
-      <span class="tag">Software Development · IT Training</span>
-      <h1>Build software. Build your career.</h1>
-      <p>Choose the AR INFOTEK practice you need. Each has its own team, process and menu, so you only see what is relevant.</p>
-      <div class="hero-actions">
-        <a class="btn" href={`${base}software-development/`}>Explore software services</a>
-        <a class="btn ghost" href={`${base}courses/`}>Browse courses</a>
+<BaseLayout
+  title="AR INFOTEK | Product Development & IT Training"
+  description="AR INFOTEK runs two focused practices: product development for businesses and live IT training for learners."
+>
+  <section class="hero hero-home">
+    <div class="container hero-grid">
+      <div>
+        <span class="tag">One company · Two focused practices</span>
+        <h1>Build the product. Build the people.</h1>
+        <p>AR INFOTEK helps businesses ship software and helps learners build job-ready technology skills. Two dedicated teams, two clear outcomes, one engineering standard.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#tracks">Choose your track</a>
+          <a class="btn ghost" href={`${base}contact/`}>Talk to us</a>
+        </div>
+        <p class="hero-note">Different outcomes. One engineering standard.</p>
       </div>
-      <div class="grid four" style="margin-top:3rem">
-        <div><div class="stat">Live</div><div class="stat-label">Mentor-led sessions</div></div>
-        <div><div class="stat">Real</div><div class="stat-label">Projects and labs</div></div>
-        <div><div class="stat">Small</div><div class="stat-label">Cohort sizes</div></div>
-        <div><div class="stat">Flexible</div><div class="stat-label">Weekday & weekend</div></div>
+
+      <div class="practice-preview" aria-label="AR INFOTEK practices">
+        <div class="preview-row preview-dev">
+          <span class="preview-tag">Practice 01</span>
+          <strong>Product Development</strong>
+          <small>For businesses that need software shipped</small>
+        </div>
+        <div class="preview-row preview-training">
+          <span class="preview-tag">Practice 02</span>
+          <strong>IT Training</strong>
+          <small>For learners who need real skills and roles</small>
+        </div>
+        <p class="preview-footer">Dedicated teams · Clear ownership · No mixed messaging</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="tracks">
     <div class="container">
-      <span class="eyebrow">Two dedicated entities</span>
-      <h2>Software development and IT training, clearly separate</h2>
-      <p>AR INFOTEK operates two focused practices with distinct teams, outcomes and customer journeys. Choose one and the menu adapts to that practice.</p>
-      <div class="grid two">
-        <div class="card entity-card entity-dev">
-          <span class="entity-label">Entity 01 · For businesses</span>
-          <h3>AR INFOTEK Software Development</h3>
-          <p>Web applications, APIs, cloud infrastructure, DevOps automation and AI integrations built with a production-first mindset. We take projects from discovery to deployment and ongoing support.</p>
-          <ul class="checks">
-            <li>Requirement analysis and solution design</li>
-            <li>Agile delivery with clear milestones</li>
-            <li>Secure, maintainable and documented code</li>
-          </ul>
-          <a class="btn blue" href={`${base}software-development/`}>Enter software development</a>
-        </div>
-        <div class="card entity-card entity-training">
-          <span class="entity-label">Entity 02 · For learners</span>
-          <h3>AR INFOTEK IT Training</h3>
-          <p>Live instructor-led courses in AI/ML, Cloud, DevOps, Data Science and Cybersecurity. Small cohorts, hands-on labs, internships and placement support prepare you for real roles.</p>
-          <ul class="checks">
-            <li>Weekday and weekend live batches</li>
-            <li>Real projects and interview preparation</li>
-            <li>Completion certificate and placement mentor</li>
-          </ul>
-          <a class="btn" href={`${base}courses/`}>Enter IT training</a>
-        </div>
+      <div class="section-head">
+        <span class="eyebrow">Choose a practice</span>
+        <h2>Two tracks. Each built for a specific outcome.</h2>
+        <p>Pick the path that matches your goal. Navigation, forms and support change with your choice so you only see what matters.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="section alt">
-    <div class="container">
-      <div class="grid two">
-        <div>
-          <span class="eyebrow">Start soon</span>
-          <h2>Upcoming batches</h2>
-          <p>Live online, small cohorts. Weekday sessions 7–9 PM IST; weekend sessions 10 AM–1 PM IST.</p>
-          <a class="btn" href={`${base}batches/`}>View all batches</a>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Program</th><th>Starts</th><th>Schedule</th><th>Availability</th></tr></thead>
-            <tbody>
-              {batches.map((batch) => (
-                <tr><td>{batch.name}</td><td>{batch.date}</td><td>{batch.mode}</td><td>{batch.seats}</td></tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">Why AR INFOTEK</span>
-      <h2>Designed for speed and career impact</h2>
-      <div class="grid three">
-        {reasons.map(([title, text]) => (
-          <div class="card"><h3>{title}</h3><p>{text}</p></div>
+      <div class="track-grid">
+        {tracks.map((track) => (
+          <div class={`track-card ${track.tone}`}>
+            <div class="track-top">
+              <span>{track.label}</span>
+              <span class="track-audience">{track.audience}</span>
+            </div>
+            <h3>{track.title}</h3>
+            <p>{track.summary}</p>
+            <ul class="checks">
+              {track.points.map((point) => <li>{point}</li>)}
+            </ul>
+            <a class="btn" href={track.href}>{track.cta}</a>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
   <section class="section alt">
-    <div class="container">
-      <div class="grid two">
-        <div>
-          <span class="eyebrow">Placement & Hiring</span>
-          <h2>Support that continues after the course</h2>
-          <p>A dedicated placement and hiring advisor reviews your profile, runs technical and HR mock interviews, tracks applications and coordinates with hiring partners.</p>
-          <ul class="checks">
-            <li>Résumé, LinkedIn and GitHub review</li>
-            <li>Technical and HR mock interviews</li>
-            <li>Application tracking and follow-ups</li>
-            <li>Employer shortlisting and internship-to-hire support</li>
-          </ul>
-          <div class="hero-actions"><a class="btn" href={`${base}placement/`}>See placement program</a><a class="btn outline" href={`${base}faq/`}>Read FAQs</a></div>
-        </div>
-        <div class="card featured">
-          <span class="tag">90-day plan</span>
-          <h3>From profile to offer</h3>
-          <p>Days 1–15: profile audit and role mapping. Days 16–45: technical mocks. Days 46–75: applications and HR mocks. Days 76–90: offers and follow-ups.</p>
-          <p class="small">Timelines depend on role and market conditions; your mentor sets a personal plan after the first review.</p>
-        </div>
+    <div class="container split-section">
+      <div>
+        <span class="eyebrow">Product development</span>
+        <h2>From idea to production, without hand-off confusion.</h2>
+        <p>We take ownership across discovery, design, engineering, deployment and support. Every project runs with clear milestones and transparent progress updates.</p>
+        <a class="btn blue" href={`${base}software-development/`}>See product services</a>
       </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">Innovation Labs</span>
-      <h2>Learn by building real systems</h2>
-      <p>Every learner works through four industry-style projects from scratch.</p>
-      <div class="grid four">
-        {labs.map(([title, text]) => (
-          <div class="card"><h3>{title}</h3><p>{text}</p></div>
+      <div class="flow-grid">
+        {devFlow.map((step) => (
+          <div class="flow-step">
+            <span class="step-no">{step.no}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
+  <section class="section">
+    <div class="container split-section reverse">
+      <div class="flow-grid">
+        {trainingFlow.map((step) => (
+          <div class="flow-step">
+            <span class="step-no">{step.no}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+      <div>
+        <span class="eyebrow">IT training</span>
+        <h2>Learn by building systems that look like real work.</h2>
+        <p>Live mentor-led sessions, guided labs and capstone projects in Cloud, DevOps, Data Science, AI/ML and Cybersecurity. Batches run on weekdays and weekends.</p>
+        <div class="hero-actions">
+          <a class="btn" href={`${base}courses/`}>Browse courses</a>
+          <a class="btn outline" href={`${base}placement/`}>Placement support</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section alt">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">Why AR INFOTEK</span>
+        <h2>Standards that travel across both practices.</h2>
+        <p>Whether we are shipping a product or training a learner, the same engineering discipline shapes the work.</p>
+      </div>
+      <div class="grid three proof-grid">
+        {proof.map((item) => (
+          <div class="card">
+            <span class="proof-label">{item.label}</span>
+            <div class="proof-title">{item.title}</div>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <span class="eyebrow">Representative engagements</span>
-      <h2>How we approach client problems</h2>
+      <h2>How we approach client problems.</h2>
       <div class="grid three">
         {studies.map(([title, text]) => (
           <div class="card"><h3>{title}</h3><p>{text}</p><a href={`${base}case-studies/`}>Read the pattern →</a></div>
@@ -162,49 +190,39 @@ const studies = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="grid two">
-        <div>
-          <span class="eyebrow">Internship Program 2026</span>
-          <h2>Learn today. Intern tomorrow.</h2>
-          <p>Real-world projects, industry exposure, resume building, interview preparation and a certificate on successful completion. Open to BE, BCA, BSc, MCA and diploma students.</p>
-          <div class="grid four" style="margin-top:1.5rem">
-            <div><div class="stat">₹1,999</div><div class="stat-label">Program fee</div></div>
-            <div><div class="stat">8</div><div class="stat-label">Domains</div></div>
-          </div>
-          <div class="hero-actions"><a class="btn" href={`${base}internship/`}>Explore internship</a><a class="btn outline" href={`${base}signup/student/`}>Register</a></div>
-        </div>
-        <div class="card">
-          <h3>Transparent pricing</h3>
-          <p>Group training from ₹2,999 per course. 1:1 mentoring from ₹14,999. Long-term mentorship from ₹24,999.</p>
-          <a href={`${base}pricing/`}>Compare all plans →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="section alt">
     <div class="container">
-      <span class="eyebrow">Learner stories</span>
-      <h2>What our learners say</h2>
-      <div class="grid three">
-        <div class="card"><p class="quote">“The AWS labs on VPC and IAM helped me design and deploy a production-ready architecture.”</p><div class="who">Harish Kumar</div><p class="small">Cloud Engineer @ StartupX</p></div>
-        <div class="card"><p class="quote">“Python, Pandas and model building gave me true end-to-end data science skills.”</p><div class="who">Vikram Rao</div><p class="small">Data Analyst @ RetailCorp</p></div>
-        <div class="card"><p class="quote">“Docker, Kubernetes and CI/CD practice made real deployments feel easy.”</p><div class="who">Neha Sharma</div><p class="small">DevOps Engineer @ FinTechCo</p></div>
+      <div class="batch-band">
+        <div>
+          <span class="eyebrow">Starting soon</span>
+          <h3>Live batches, small cohorts.</h3>
+          <p>Weekday sessions 7–9 PM IST; weekend sessions 10 AM–1 PM IST.</p>
+        </div>
+        <a class="btn" href={`${base}batches/`}>View all batches</a>
       </div>
-      <p style="margin-top:1.5rem"><a href={`${base}testimonials/`}>Read all stories</a> · <a href={`${base}blog/`}>Career blog</a></p>
+      <div class="table-wrap batch-table">
+        <table>
+          <thead><tr><th>Program</th><th>Starts</th><th>Schedule</th><th>Availability</th></tr></thead>
+          <tbody>
+            {batches.map((batch) => (
+              <tr><td>{batch.name}</td><td>{batch.date}</td><td>{batch.mode}</td><td>{batch.seats}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container center">
-      <h2>Ready to get started?</h2>
-      <p>Talk to an advisor, or create an account to access your dashboard.</p>
-      <div class="hero-actions" style="justify-content:center">
-        <a class="btn" href={`${base}contact/`}>Contact us</a>
-        <a class="btn outline" href={`${base}signup/customer/`}>Customer signup</a>
-        <a class="btn outline" href={`${base}signup/student/`}>Student signup</a>
+    <div class="container cta-panel">
+      <div>
+        <span class="eyebrow">Still deciding?</span>
+        <h2>Not sure which track fits?</h2>
+        <p>Tell us what you are trying to achieve. We will point you to the right practice, whether that is a product build or a training track.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn" href={`${base}contact/`}>Talk to an advisor</a>
+        <a class="btn outline" href={`${base}pricing/`}>Compare options</a>
       </div>
     </div>
   </section>
