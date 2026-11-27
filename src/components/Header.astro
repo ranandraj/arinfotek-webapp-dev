@@ -53,8 +53,8 @@ const mode = trainingPrefixes.some((prefix) => relativePath.startsWith(prefix))
       {mode === 'development' && <a class="nav-switch" href={`${base}courses/`}>Looking for IT Training?</a>}
       {mode === 'training' && <a class="nav-switch" href={`${base}software-development/`}>Need software development?</a>}
 
-      <a class="btn outline" href={`${base}login/customer/`}>Customer Login</a>
-      <a class="btn" href={`${base}login/student/`}>Student Login</a>
+      {mode === 'development' && <a class="btn" href={`${base}login/customer/`}>Customer Login</a>}
+      {mode === 'training' && <a class="btn" href={`${base}login/student/`}>Student Login</a>}
     </nav>
   </div>
 </header>
