@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const services = [
   { title: 'Web Application Development', text: 'Business websites, dashboards and portals built for speed, security and maintainability.' },
   { title: 'API & Backend Engineering', text: 'Secure REST APIs, third-party integrations and database design with clear documentation.' },
