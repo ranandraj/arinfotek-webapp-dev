@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const batches = [
+  { name: 'AWS Cloud Architect', start: '25 Nov 2026', schedule: 'Weekdays · 7–9 PM IST', duration: '16 weeks', seats: '4 seats left' },
+  { name: 'Data Science & ML', start: '02 Dec 2026', schedule: 'Weekends · 10 AM–1 PM IST', duration: '14 weeks', seats: '6 seats left' },
+  { name: 'Cloud & DevOps', start: '09 Dec 2026', schedule: 'Weekdays · 7–9 PM IST', duration: '12 weeks', seats: 'New batch' },
+  { name: 'Cybersecurity', start: '16 Dec 2026', schedule: 'Weekends · 10 AM–1 PM IST', duration: '10 weeks', seats: 'New batch' },
+];
+---
+<BaseLayout title="Upcoming Batches | AR INFOTEK" description="Live online training batches at AR INFOTEK with weekday and weekend schedules.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Live Training</span>
+      <h1>Choose your next batch</h1>
+      <p>Small cohorts, live sessions, hands-on labs and mentor support.</p>
+      <a class="btn" href={`${base}contact/`}>Reserve a seat</a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Program</th><th>Starts</th><th>Schedule</th><th>Duration</th><th>Availability</th></tr></thead>
+          <tbody>
+            {batches.map((batch) => (
+              <tr><td>{batch.name}</td><td>{batch.start}</td><td>{batch.schedule}</td><td>{batch.duration}</td><td>{batch.seats}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="hero-actions">
+        <a class="btn" href={`${base}signup/student/`}>Create student account</a>
+        <a class="btn outline" href={`${base}pricing/`}>Compare pricing</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
