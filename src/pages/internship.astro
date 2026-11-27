@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const domains = ['AI / ML', 'Cloud Computing', 'Data Science', 'Full Stack Web Development', 'Python', 'Mobile Apps', 'DevOps', 'Vibe Coding'];
 const highlights = [
   ['Real Projects', 'Work on industry-style assignments instead of theoretical exercises.'],
