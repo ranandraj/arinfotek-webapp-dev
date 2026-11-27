@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const plans = [
+  { name: 'Group Training', price: '₹2,999', note: 'per course', features: ['Live cohort classes', 'Hands-on labs', 'Capstone project', 'Completion certificate'] },
+  { name: '1:1 Mentoring', price: '₹14,999', note: 'per course', features: ['Personal mentor', 'Flexible schedule', 'Custom project plan', 'Resume & interview prep'] },
+  { name: 'Long-Term Mentorship', price: '₹24,999', note: '6 months', features: ['Multiple courses', 'Career roadmap', 'Mock interviews', 'Portfolio review'] },
+];
+const software = [
+  { name: 'Starter Website', price: 'Custom quote', features: ['Responsive 5–8 pages', 'Contact form', 'Basic SEO setup'] },
+  { name: 'Business Application', price: 'Custom quote', features: ['Dashboard & auth', 'API and database', 'Cloud deployment'] },
+  { name: 'Enterprise Solution', price: 'Custom quote', features: ['Architecture design', 'Integrations', 'Ongoing support'] },
+];
+---
+<BaseLayout title="Pricing | AR INFOTEK" description="Transparent pricing for training, mentoring and software development services.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Transparent Pricing</span>
+      <h1>Clear plans. Real value.</h1>
+      <p>Choose a learning plan or request a custom software quote.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>Training plans</h2>
+      <div class="grid three">
+        {plans.map((plan, index) => (
+          <div class={`card ${index === 1 ? 'featured' : ''}`}>
+            <h3>{plan.name}</h3>
+            <div class="price">{plan.price}</div>
+            <p class="small">{plan.note}</p>
+            <ul class="checks">{plan.features.map((feature) => <li>{feature}</li>)}</ul>
+            <a class="btn outline" href={`${base}contact/`}>Enquire</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <h2>Software development</h2>
+      <div class="grid three">
+        {software.map((item) => (
+          <div class="card">
+            <h3>{item.name}</h3>
+            <div class="price" style="font-size:1.4rem">{item.price}</div>
+            <ul class="checks">{item.features.map((feature) => <li>{feature}</li>)}</ul>
+            <a class="btn" href={`${base}contact/`}>Request quote</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
