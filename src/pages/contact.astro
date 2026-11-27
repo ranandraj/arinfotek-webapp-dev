@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
-<BaseLayout title="Contact | AR INFOTEK" description="Talk to the AR INFOTEK team about software projects or IT training.">
+<BaseLayout title="Contact | AR INFOTEK" description="Talk to the AR INFOTEK team about software projects, courses, placement support or internships.">
   <section class="section">
     <div class="container">
       <span class="eyebrow">Talk to us</span>
       <h1>Let's discuss your goal</h1>
-      <p>Tell us whether you need a software partner or a career-changing course. We'll get back to you within one working day.</p>
+      <p>Tell us whether you need a software partner, a career-changing course, placement support or an internship. We'll get back to you within one working day.</p>
       <div class="grid two">
         <div class="card">
           <h3>Direct contact</h3>
@@ -15,31 +16,13 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
           <p><strong>Phone / WhatsApp:</strong> +91-9487107253</p>
           <p><strong>Weekday batches:</strong> 7–9 PM IST</p>
           <p><strong>Weekend batches:</strong> 10 AM–1 PM IST</p>
-          <h3 style="margin-top:1.5rem">Office</h3>
-          <p>Remote-first team serving clients and learners across India.</p>
-          <a href={`${base}courses/`}>Explore courses →</a>
+          <p><strong>Office:</strong> Remote-first team serving clients and learners across India.</p>
+          <h3 style="margin-top:1.5rem">Useful links</h3>
+          <p><a href={`${base}courses/`}>Courses</a> · <a href={`${base}batches/`}>Batches</a> · <a href={`${base}placement/`}>Placement</a> · <a href={`${base}case-studies/`}>Case studies</a> · <a href={`${base}faq/`}>FAQ</a></p>
         </div>
-        <div class="card">
-          <h3>Send a message</h3>
-          <form action="https://formspree.io/f/your_form_id" method="POST">
-            <label for="name">Name</label>
-            <input id="name" name="name" required />
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required />
-            <label for="topic">I'm interested in</label>
-            <select id="topic" name="topic">
-              <option>Software Development</option>
-              <option>IT Training</option>
-              <option>Internship</option>
-              <option>Other</option>
-            </select>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4"></textarea>
-            <button class="btn" type="submit">Send message</button>
-          </form>
-          <p class="small" style="margin-top:1rem">You can also create a <a href={`${base}signup/customer/`}>customer account</a> or <a href={`${base}signup/student/`}>student account</a>.</p>
-        </div>
+        <LeadForm interest="General enquiry" heading="Send us a message" />
       </div>
+      <p class="small" style="margin-top:1.5rem">You can also create a <a href={`${base}signup/customer/`}>customer account</a> or <a href={`${base}signup/student/`}>student account</a>.</p>
     </div>
   </section>
 </BaseLayout>
