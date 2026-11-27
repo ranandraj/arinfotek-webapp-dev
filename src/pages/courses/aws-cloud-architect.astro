@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const modules = [
+  ['Cloud foundations', 'Shared responsibility model, regions, accounts, IAM users, roles and policies.'],
+  ['Networking', 'VPC design, subnets, route tables, NAT, security groups and network ACLs.'],
+  ['Compute', 'EC2, AMIs, auto scaling groups, load balancers and launch templates.'],
+  ['Storage & databases', 'S3, EBS, EFS, RDS and backup/restore patterns.'],
+  ['Security & cost', 'KMS, Secrets Manager, CloudTrail, budgets and least-privilege reviews.'],
+  ['Capstone', 'Deploy a secure multi-tier application with monitoring and a rollback plan.'],
+];
+---
+<BaseLayout title="AWS Cloud Architect Course | AR INFOTEK" description="16-week live AWS Cloud Architect course with labs, capstone, placement support and mentor-led batches.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">16 weeks · AWS Cloud Architect</span>
+      <h1>Design and deploy secure AWS systems</h1>
+      <p>A practical architecture program for learners who want to move beyond console clicks and design reliable, secure cloud systems.</p>
+      <div class="hero-actions"><a class="btn" href={`${base}contact/`}>Book a demo class</a><a class="btn ghost" href={`${base}batches/`}>View batches</a></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>What you'll learn</h2>
+      <div class="grid three">
+        {modules.map(([title, text], index) => (
+          <div class="card"><span class="tag">Module {index + 1}</span><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <div class="grid two">
+        <div class="card">
+          <h3>Prerequisites & tools</h3>
+          <ul class="checks">
+            <li>Basic computer and networking concepts</li>
+            <li>Familiarity with the command line is helpful</li>
+            <li>AWS free-tier account, CLI and a laptop with 8 GB RAM</li>
+          </ul>
+          <h3 style="margin-top:1.5rem">Projects you'll build</h3>
+          <ul class="checks">
+            <li>Secure three-tier web application</li>
+            <li>IAM policy review and least-privilege cleanup</li>
+            <li>Automated deployment with monitoring and alerts</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Batch & fee</h3>
+          <p><strong>Next batch:</strong> 25 Nov · Weekdays 7–9 PM IST</p>
+          <p><strong>Group training:</strong> ₹2,999 per course · <strong>1:1 mentoring:</strong> ₹14,999</p>
+          <p class="small">EMI and batch-transfer options are discussed during counselling. Certificate issued after course and capstone completion.</p>
+          <p>Taught by an industry mentor with production cloud experience.</p>
+          <a class="btn outline" href={`${base}faq/`}>Read FAQs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <LeadForm interest="AWS Cloud Architect" heading="Enquire about AWS Cloud Architect" />
+    </div>
+  </section>
+</BaseLayout>
