@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const batches = [
   { name: 'AWS Architect', date: '25 Nov', mode: 'Weekdays', seats: '4 seats left' },
   { name: 'Data Science', date: '02 Dec', mode: 'Weekends', seats: '6 seats left' },
