@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const faqs = [
+  {
+    q: 'Do I need prior coding experience?',
+    a: 'For most courses, basic computer literacy is enough. We recommend the Python foundation path for complete beginners; your advisor confirms the right level during counselling.',
+  },
+  {
+    q: 'Are classes live? Do you provide recordings?',
+    a: 'Core sessions are live and interactive. Recording and backup-session availability is shared before enrolment so you can plan attendance confidently.',
+  },
+  {
+    q: 'How are doubts handled?',
+    a: 'You get mentor support during live sessions and a defined doubt-clearing channel for the cohort. Response expectations are explained at the start.',
+  },
+  {
+    q: 'What if I miss a class?',
+    a: 'Inform your mentor early. Backup options, recordings and rescheduling rules are shared before you join, so there are no surprises.',
+  },
+  {
+    q: 'Will I receive a certificate?',
+    a: 'Yes, on successful completion of the course and capstone project. Ask the team for a sample format before enrolling.',
+  },
+  {
+    q: 'How does placement support work?',
+    a: 'A dedicated placement and hiring advisor reviews your profile, runs technical and HR mock interviews, tracks applications and coordinates with hiring partners. See the Placement & Hiring page for the full workflow.',
+  },
+  {
+    q: 'What is the refund or transfer policy?',
+    a: 'Batch transfer and refund terms depend on the program and start date. Ask for the current written policy before payment.',
+  },
+  {
+    q: 'How are software projects priced?',
+    a: 'After discovery we agree a fixed scope, milestones and deliverables. The proposal also covers NDA, code ownership, support and maintenance options.',
+  },
+];
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
+};
+---
+<BaseLayout title="FAQ | AR INFOTEK" description="Answers about live training, recordings, certificates, placement support and software project pricing.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  <section class="hero">
+    <div class="container">
+      <span class="tag">FAQ</span>
+      <h1>Questions, answered</h1>
+      <p>Clear answers before you enrol or start a project.</p>
+      <a class="btn" href={`${base}contact/`}>Ask something else</a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid two">
+        {faqs.map((faq) => (
+          <div class="card"><h3>{faq.q}</h3><p>{faq.a}</p></div>
+        ))}
+      </div>
+      <p class="small" style="margin-top:1.5rem">Related: <a href={`${base}placement/`}>Placement & Hiring</a> · <a href={`${base}pricing/`}>Pricing</a> · <a href={`${base}contact/`}>Contact</a></p>
+    </div>
+  </section>
+</BaseLayout>
