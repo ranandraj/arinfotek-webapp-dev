@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout title="Portfolio That Gets Interviews | AR INFOTEK" description="How to present projects so recruiters and engineers take them seriously.">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Placement · 5 min read</span>
+      <h1>Build a portfolio that gets interviews</h1>
+      <p class="small">12 Nov 2026</p>
+      <div class="card">
+        <h2>Three projects are enough — if explained well</h2>
+        <p>Each project should show the problem, your design decisions, the stack, a screenshot or diagram, and what you would improve next. Recruiters scan; engineers read the details.</p>
+        <h2 style="margin-top:1.5rem">Use this structure</h2>
+        <ul class="checks">
+          <li>Problem statement in one sentence</li>
+          <li>Architecture diagram or flow</li>
+          <li>What you personally built</li>
+          <li>Trade-offs and failures</li>
+          <li>Link to code or demo</li>
+        </ul>
+        <p>Our <a href={`${base}placement/`}>placement mentor</a> reviews portfolios and turns project descriptions into interview-ready stories.</p>
+      </div>
+      <p style="margin-top:1.5rem"><a href={`${base}blog/`}>← Back to blog</a></p>
+    </div>
+  </section>
+</BaseLayout>
