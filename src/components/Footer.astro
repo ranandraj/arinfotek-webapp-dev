@@ -15,7 +15,7 @@ const mode = trainingPrefixes.some((prefix) => relativePath.startsWith(prefix))
   <div class="container footer-grid">
     <div>
       <h4>AR INFOTEK</h4>
-      <p class="small">Software development and practical, mentor-led IT training.</p>
+      <p class="small">Product development and practical, mentor-led IT training.</p>
       <p class="small">admissions@arinfotek.co.in<br />+91-9487107253</p>
     </div>
 
@@ -42,13 +42,29 @@ const mode = trainingPrefixes.some((prefix) => relativePath.startsWith(prefix))
       </div>
     )}
 
-    <div>
-      <h4>Accounts</h4>
-      <p class="small"><a href={`${base}signup/customer/`}>Customer signup</a></p>
-      <p class="small"><a href={`${base}login/customer/`}>Customer login</a></p>
-      <p class="small"><a href={`${base}signup/student/`}>Student signup</a></p>
-      <p class="small"><a href={`${base}login/student/`}>Student login</a></p>
-    </div>
+    {mode === 'home' && (
+      <div>
+        <h4>Start here</h4>
+        <p class="small"><a href={`${base}software-development/`}>Product development</a></p>
+        <p class="small"><a href={`${base}courses/`}>IT training</a></p>
+      </div>
+    )}
+
+    {mode === 'development' && (
+      <div>
+        <h4>Customer account</h4>
+        <p class="small"><a href={`${base}signup/customer/`}>Customer signup</a></p>
+        <p class="small"><a href={`${base}login/customer/`}>Customer login</a></p>
+      </div>
+    )}
+
+    {mode === 'training' && (
+      <div>
+        <h4>Student account</h4>
+        <p class="small"><a href={`${base}signup/student/`}>Student signup</a></p>
+        <p class="small"><a href={`${base}login/student/`}>Student login</a></p>
+      </div>
+    )}
   </div>
   <div class="container small">
     © {year} AR INFOTEK. All rights reserved.
