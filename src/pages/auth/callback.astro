@@ -16,7 +16,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   import { supabase } from '../../lib/supabase';
 
   const msg = document.querySelector<HTMLElement>('#auth-msg')!;
-  const base = import.meta.env.BASE_URL;
+  const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
   (async () => {
     try {
