@@ -2,10 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const services = [
-  { title: 'Web Application Development', text: 'Business websites, dashboards and portals built for speed and maintainability.' },
-  { title: 'API & Backend Engineering', text: 'Secure REST APIs, integrations and database design.' },
-  { title: 'Cloud & DevOps', text: 'AWS/Azure deployment, Docker, Kubernetes and CI/CD pipelines.' },
-  { title: 'AI Integration', text: 'RAG chatbots, document intelligence and automation with modern AI tooling.' },
+  { title: 'Web Application Development', text: 'Business websites, dashboards and portals built for speed, security and maintainability.' },
+  { title: 'API & Backend Engineering', text: 'Secure REST APIs, third-party integrations and database design with clear documentation.' },
+  { title: 'Cloud & DevOps', text: 'AWS/Azure deployment, Docker, Kubernetes, Terraform and CI/CD automation.' },
+  { title: 'AI Integration', text: 'RAG chatbots, document intelligence and workflow automation with modern AI tooling.' },
+];
+const process = [
+  ['Discovery', 'We understand goals, users, constraints and success criteria.'],
+  ['Design', 'Wireframes, architecture and a delivery plan with clear milestones.'],
+  ['Build', 'Agile sprints with code reviews, testing and transparent progress updates.'],
+  ['Launch & Support', 'Deployment, monitoring, maintenance and future enhancements.'],
 ];
 ---
 <BaseLayout title="Software Development | AR INFOTEK" description="Custom software, API, cloud and AI development services by AR INFOTEK.">
@@ -29,6 +35,27 @@ const services = [
           </div>
         ))}
       </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <h2>Our delivery process</h2>
+      <div class="grid four">
+        {process.map(([title, text], index) => (
+          <div class="card"><span class="tag">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>Engagement models</h2>
+      <div class="grid three">
+        <div class="card"><h3>Fixed scope</h3><p>Defined deliverables, timeline and price for a clearly scoped project.</p></div>
+        <div class="card"><h3>Dedicated team</h3><p>Engineers working as an extension of your team with ongoing sprints.</p></div>
+        <div class="card"><h3>Consultation</h3><p>Architecture review, technology selection and roadmap planning.</p></div>
+      </div>
+      <div class="hero-actions"><a class="btn" href={`${base}signup/customer/`}>Create customer account</a><a class="btn outline" href={`${base}contact/`}>Talk to us</a></div>
     </div>
   </section>
 </BaseLayout>
