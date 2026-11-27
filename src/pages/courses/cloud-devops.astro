@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const modules = [
+  ['Linux & Git', 'Shell basics, permissions, processes, branching and collaboration workflows.'],
+  ['Containers', 'Docker images, volumes, networks and Compose-based local environments.'],
+  ['Kubernetes', 'Pods, deployments, services, config maps and rolling updates.'],
+  ['Infrastructure as code', 'Terraform basics, state, variables and reusable modules.'],
+  ['CI/CD', 'GitHub Actions, automated tests, build artifacts and environment promotion.'],
+  ['Observability', 'Logs, metrics, alerts and incident debugging.'],
+];
+---
+<BaseLayout title="Cloud & DevOps Course | AR INFOTEK" description="12-week live Cloud and DevOps course covering Docker, Kubernetes, Terraform and CI/CD.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">12 weeks · Cloud & DevOps</span>
+      <h1>Ship software reliably</h1>
+      <p>Build the practical skills teams expect from a DevOps engineer: containers, orchestration, automation and monitoring.</p>
+      <div class="hero-actions"><a class="btn" href={`${base}contact/`}>Book a demo class</a><a class="btn ghost" href={`${base}batches/`}>View batches</a></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>What you'll learn</h2>
+      <div class="grid three">
+        {modules.map(([title, text], index) => (
+          <div class="card"><span class="tag">Module {index + 1}</span><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <div class="grid two">
+        <div class="card">
+          <h3>Prerequisites & tools</h3>
+          <ul class="checks">
+            <li>Basic programming and command-line familiarity</li>
+            <li>Understanding of web applications is helpful</li>
+            <li>Laptop with 8 GB RAM, Docker, Git and cloud account</li>
+          </ul>
+          <h3 style="margin-top:1.5rem">Projects you'll build</h3>
+          <ul class="checks">
+            <li>Containerised multi-service application</li>
+            <li>GitOps-style Kubernetes deployment</li>
+            <li>CI/CD pipeline with tests, alerts and rollback</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Batch & fee</h3>
+          <p><strong>Next batch:</strong> 09 Dec · Weekdays 7–9 PM IST</p>
+          <p><strong>Group training:</strong> ₹2,999 per course · <strong>1:1 mentoring:</strong> ₹14,999</p>
+          <p class="small">EMI and batch-transfer options are discussed during counselling. Certificate issued after course and capstone completion.</p>
+          <p>Taught by an industry mentor with delivery and platform experience.</p>
+          <a class="btn outline" href={`${base}faq/`}>Read FAQs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container"><LeadForm interest="Cloud & DevOps" heading="Enquire about Cloud & DevOps" /></div>
+  </section>
+</BaseLayout>
