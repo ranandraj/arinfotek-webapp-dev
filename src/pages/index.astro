@@ -25,6 +25,13 @@ const tracks = [
   },
 ];
 
+const deliverables = [
+  { title: 'Discovery brief', text: 'Goals, users, constraints and success criteria documented before build work starts.' },
+  { title: 'Design plan', text: 'Wireframes, architecture and a milestone-based delivery plan your team can review.' },
+  { title: 'Production codebase', text: 'Reviewed, tested and documented code you own, with clear handover notes.' },
+  { title: 'Launch and support', text: 'Deployment, monitoring and a defined path for fixes and future enhancements.' },
+];
+
 const devFlow = [
   { no: '01', title: 'Discover', text: 'Goals, users, constraints and success criteria.' },
   { no: '02', title: 'Design', text: 'Architecture, wireframes and a milestone plan.' },
@@ -32,11 +39,22 @@ const devFlow = [
   { no: '04', title: 'Launch', text: 'Deployment, monitoring and future enhancements.' },
 ];
 
-const trainingFlow = [
-  { no: '01', title: 'Counselling', text: 'Choose the right track for your goal.' },
-  { no: '02', title: 'Live labs', text: 'Work with mentors, not passive videos.' },
-  { no: '03', title: 'Capstone', text: 'Build and present a real project.' },
-  { no: '04', title: 'Placement', text: 'Profile, mocks and application tracking.' },
+const engagements = [
+  {
+    title: 'Operations dashboard',
+    outcome: 'Clear role-based views for teams that relied on scattered spreadsheets.',
+    stack: 'Web app · API · Access control',
+  },
+  {
+    title: 'Document assistant',
+    outcome: 'Cited answers from company PDFs instead of manual document searching.',
+    stack: 'RAG · Vector search · Auth',
+  },
+  {
+    title: 'Pipeline modernisation',
+    outcome: 'Repeatable deployments replacing manual, error-prone release steps.',
+    stack: 'Containers · CI/CD · Tests',
+  },
 ];
 
 const proof = [
@@ -44,22 +62,10 @@ const proof = [
   { label: 'Learning standard', title: 'Project-first teaching', text: 'Learners build dashboards, deployments and intelligent assistants instead of only watching lectures.' },
   { label: 'Outcome standard', title: 'Support after delivery', text: 'Clients get a support path; learners get a hiring mentor and a practical 90-day plan.' },
 ];
-
-const batches = [
-  { name: 'AWS Architect', date: '25 Nov', mode: 'Weekdays', seats: '4 seats left' },
-  { name: 'Data Science', date: '02 Dec', mode: 'Weekends', seats: '6 seats left' },
-  { name: 'DevOps Master', date: '09 Dec', mode: 'Weekdays', seats: 'New batch' },
-];
-
-const studies = [
-  ['Operations dashboard', 'Workflow, role-based access and reporting built as a phased release.'],
-  ['Document assistant', 'RAG assistant over PDFs with citations and access control.'],
-  ['Pipeline modernisation', 'Containers, automated tests and repeatable deployments.'],
-];
 ---
 <BaseLayout
   title="AR INFOTEK | Product Development & IT Training"
-  description="AR INFOTEK runs two focused practices: product development for businesses and live IT training for learners."
+  description="AR INFOTEK builds products for businesses and delivers live, mentor-led IT training for learners."
 >
   <section class="hero hero-home">
     <div class="container hero-grid">
@@ -67,8 +73,17 @@ const studies = [
         <span class="tag">One company · Two focused practices</span>
         <h1>Build the product. Build the people.</h1>
         <p>AR INFOTEK helps businesses ship software and helps learners build job-ready technology skills. Two dedicated teams, two clear outcomes, one engineering standard.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#tracks">Choose your track</a>
+        <div class="hero-choice">
+          <a class="choice-btn" href="#product-spotlight">
+            <strong>I need a product built</strong>
+            <span>For businesses</span>
+          </a>
+          <a class="choice-btn choice-training" href="#training-strip">
+            <strong>I want to learn a skill</strong>
+            <span>For learners</span>
+          </a>
+        </div>
+        <div class="hero-actions small">
           <a class="btn ghost" href={`${base}contact/`}>Talk to us</a>
         </div>
         <p class="hero-note">Different outcomes. One engineering standard.</p>
@@ -116,14 +131,33 @@ const studies = [
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section alt" id="product-spotlight">
     <div class="container split-section">
       <div>
         <span class="eyebrow">Product development</span>
-        <h2>From idea to production, without hand-off confusion.</h2>
+        <h2>From idea to production, with one accountable team.</h2>
         <p>We take ownership across discovery, design, engineering, deployment and support. Every project runs with clear milestones and transparent progress updates.</p>
-        <a class="btn blue" href={`${base}software-development/`}>See product services</a>
+        <div class="model-row">
+          <span>Fixed scope</span>
+          <span>Dedicated team</span>
+          <span>Consultation</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn" href={`${base}contact/`}>Book a discovery call</a>
+          <a class="btn blue" href={`${base}software-development/`}>See product services</a>
+        </div>
       </div>
+      <div class="deliverables">
+        {deliverables.map((item) => (
+          <div class="deliverable">
+            <strong>{item.title}</strong>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="container flow-wrap">
       <div class="flow-grid">
         {devFlow.map((step) => (
           <div class="flow-step">
@@ -137,29 +171,40 @@ const studies = [
   </section>
 
   <section class="section">
-    <div class="container split-section reverse">
-      <div class="flow-grid">
-        {trainingFlow.map((step) => (
-          <div class="flow-step">
-            <span class="step-no">{step.no}</span>
-            <h3>{step.title}</h3>
-            <p>{step.text}</p>
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Representative engagement patterns</span>
+        <h2>Proof lives in the work, not just the pitch.</h2>
+        <p>These are example problem patterns and the outputs we design for. Read the full pattern notes on the case studies page.</p>
+      </div>
+      <div class="grid three">
+        {engagements.map((item) => (
+          <div class="card engagement-card">
+            <h3>{item.title}</h3>
+            <div class="engagement-outcome">{item.outcome}</div>
+            <span class="engagement-stack">{item.stack}</span>
+            <p><a href={`${base}case-studies/`}>Read the pattern →</a></p>
           </div>
         ))}
-      </div>
-      <div>
-        <span class="eyebrow">IT training</span>
-        <h2>Learn by building systems that look like real work.</h2>
-        <p>Live mentor-led sessions, guided labs and capstone projects in Cloud, DevOps, Data Science, AI/ML and Cybersecurity. Batches run on weekdays and weekends.</p>
-        <div class="hero-actions">
-          <a class="btn" href={`${base}courses/`}>Browse courses</a>
-          <a class="btn outline" href={`${base}placement/`}>Placement support</a>
-        </div>
       </div>
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section alt" id="training-strip">
+    <div class="container training-strip">
+      <div>
+        <span class="eyebrow">IT training</span>
+        <h2>Live, mentor-led learning with real projects.</h2>
+        <p>Cloud, DevOps, Data Science, AI/ML and Cybersecurity. Weekday and weekend batches, capstone projects and placement support.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn" href={`${base}courses/`}>Explore IT training</a>
+        <a class="btn outline" href={`${base}batches/`}>Upcoming batches</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="section-head center">
         <span class="eyebrow">Why AR INFOTEK</span>
@@ -178,51 +223,16 @@ const studies = [
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <span class="eyebrow">Representative engagements</span>
-      <h2>How we approach client problems.</h2>
-      <div class="grid three">
-        {studies.map(([title, text]) => (
-          <div class="card"><h3>{title}</h3><p>{text}</p><a href={`${base}case-studies/`}>Read the pattern →</a></div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <section class="section alt">
-    <div class="container">
-      <div class="batch-band">
-        <div>
-          <span class="eyebrow">Starting soon</span>
-          <h3>Live batches, small cohorts.</h3>
-          <p>Weekday sessions 7–9 PM IST; weekend sessions 10 AM–1 PM IST.</p>
-        </div>
-        <a class="btn" href={`${base}batches/`}>View all batches</a>
-      </div>
-      <div class="table-wrap batch-table">
-        <table>
-          <thead><tr><th>Program</th><th>Starts</th><th>Schedule</th><th>Availability</th></tr></thead>
-          <tbody>
-            {batches.map((batch) => (
-              <tr><td>{batch.name}</td><td>{batch.date}</td><td>{batch.mode}</td><td>{batch.seats}</td></tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
     <div class="container cta-panel">
       <div>
-        <span class="eyebrow">Still deciding?</span>
-        <h2>Not sure which track fits?</h2>
-        <p>Tell us what you are trying to achieve. We will point you to the right practice, whether that is a product build or a training track.</p>
+        <span class="eyebrow">Start a conversation</span>
+        <h2>Have a product idea? Let's scope it.</h2>
+        <p>Tell us what you want to build and we will map the discovery, delivery plan and next step. Looking for training instead? Explore the courses track.</p>
       </div>
       <div class="hero-actions">
-        <a class="btn" href={`${base}contact/`}>Talk to an advisor</a>
-        <a class="btn outline" href={`${base}pricing/`}>Compare options</a>
+        <a class="btn" href={`${base}contact/`}>Book a discovery call</a>
+        <a class="btn outline" href={`${base}courses/`}>Explore IT training</a>
       </div>
     </div>
   </section>
