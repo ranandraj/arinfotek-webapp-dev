@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AuthForm from '../../components/AuthForm.astro';
+---
+<BaseLayout title="Student Signup | AR INFOTEK" description="Create your AR INFOTEK student account for courses and internships.">
+  <section class="section">
+    <div class="container">
+      <div class="banner">Students: use this page to enrol in courses, internships and your learner dashboard.</div>
+      <AuthForm mode="signup" role="student" />
+    </div>
+  </section>
+</BaseLayout>
