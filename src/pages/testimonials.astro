@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const testimonials = [
+  { name: 'Harish Kumar', role: 'Cloud Engineer @ StartupX', text: 'The AWS labs on VPC, IAM and load balancing helped me design and deploy a production-ready architecture. The mentor explained every decision clearly.' },
+  { name: 'Vikram Rao', role: 'Data Analyst @ RetailCorp', text: 'Python, Pandas and model building gave me true end-to-end data science skills. I built a sales prediction project that became part of my portfolio.' },
+  { name: 'Neha Sharma', role: 'DevOps Engineer @ FinTechCo', text: 'Docker, Kubernetes and CI/CD practice made real deployments feel easy. The GitOps capstone was especially useful in interviews.' },
+  { name: 'Sai Prasad', role: 'Security Analyst', text: 'The SOC labs and threat modelling sessions gave me confidence with SIEM tools and real incident analysis.' },
+];
+---
+<BaseLayout title="Testimonials | AR INFOTEK" description="Learner reviews and success stories from AR INFOTEK training programs.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Learner Stories</span>
+      <h1>Real people. Real outcomes.</h1>
+      <p>Our learners work across cloud, data, DevOps and security roles.</p>
+      <a class="btn" href={`${base}courses/`}>Explore courses</a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid two">
+        {testimonials.map((item) => (
+          <div class="card">
+            <p class="quote">“{item.text}”</p>
+            <div class="who">{item.name}</div>
+            <p class="small">{item.role}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
