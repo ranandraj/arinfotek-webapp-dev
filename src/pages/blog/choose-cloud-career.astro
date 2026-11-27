@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout title="Choosing Cloud, DevOps or Data Science | AR INFOTEK" description="How to pick a technology career path based on what you enjoy doing every day.">
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Career · 6 min read</span>
+      <h1>How to choose between Cloud, DevOps and Data Science</h1>
+      <p class="small">20 Nov 2026</p>
+      <div class="card">
+        <h2>Start with the work, not the salary</h2>
+        <p>Cloud architects spend time on networks, security and reliability. DevOps engineers focus on automation, deployments and tooling. Data scientists work with messy data, models and decisions. Pick the daily work you will still enjoy after six months.</p>
+        <h2 style="margin-top:1.5rem">A quick test</h2>
+        <ul class="checks">
+          <li>You like designing systems and explaining trade-offs → Cloud</li>
+          <li>You like pipelines, containers and removing manual work → DevOps</li>
+          <li>You like questions, patterns and datasets → Data Science</li>
+        </ul>
+        <h2 style="margin-top:1.5rem">Reduce the risk</h2>
+        <p>Attend a demo class, speak to a mentor and build one small project before committing to a long program. Our <a href={`${base}contact/`}>advisors</a> can help you compare tracks.</p>
+      </div>
+      <p style="margin-top:1.5rem"><a href={`${base}blog/`}>← Back to blog</a></p>
+    </div>
+  </section>
+</BaseLayout>
