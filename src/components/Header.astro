@@ -1,5 +1,14 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const path = Astro.url.pathname;
+const relativePath = path.startsWith(base) ? `/${path.slice(base.length)}` : path;
+const trainingPrefixes = ['/courses/', '/batches/', '/internship/', '/placement/', '/testimonials/', '/faq/', '/blog/', '/signup/student/', '/login/student/', '/dashboard/student/'];
+const developmentPrefixes = ['/software-development/', '/case-studies/', '/signup/customer/', '/login/customer/', '/dashboard/customer/', '/contact/'];
+const mode = trainingPrefixes.some((prefix) => relativePath.startsWith(prefix))
+  ? 'training'
+  : developmentPrefixes.some((prefix) => relativePath.startsWith(prefix))
+    ? 'development'
+    : 'home';
 ---
 <header class="site-header">
   <div class="container nav-wrap">
@@ -7,33 +16,43 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
       <img src={`${base}logo.webp`} onerror={`this.onerror=null;this.src='${base}logo.png'`} alt="AR INFOTEK" />
     </a>
     <nav class="nav">
-      <div class="has-dropdown">
-        <a href={`${base}software-development/`}>Software Development <span class="caret">▾</span></a>
-        <div class="nav-menu">
-          <a href={`${base}software-development/`}>Overview</a>
-          <a href={`${base}case-studies/`}>Case Studies</a>
-          <a href={`${base}pricing/`}>Engagement Models</a>
-          <a href={`${base}contact/`}>Request a Quote</a>
+      {mode !== 'training' && (
+        <div class="has-dropdown">
+          <a href={`${base}software-development/`}>Software Development <span class="caret">▾</span></a>
+          <div class="nav-menu">
+            <a href={`${base}software-development/`}>Overview</a>
+            <a href={`${base}case-studies/`}>Case Studies</a>
+            <a href={`${base}software-development/#engagement-models`}>Engagement Models</a>
+            <a href={`${base}contact/`}>Request a Quote</a>
+          </div>
         </div>
-      </div>
-      <div class="has-dropdown">
-        <a href={`${base}courses/`}>IT Training <span class="caret">▾</span></a>
-        <div class="nav-menu">
-          <a href={`${base}courses/`}>All courses</a>
-          <a href={`${base}courses/aws-cloud-architect/`}>AWS Cloud Architect</a>
-          <a href={`${base}courses/data-science-ml/`}>Data Science & ML</a>
-          <a href={`${base}courses/cloud-devops/`}>Cloud & DevOps</a>
-          <a href={`${base}courses/cybersecurity/`}>Cybersecurity</a>
-          <a href={`${base}batches/`}>Upcoming batches</a>
-          <a href={`${base}internship/`}>Internship</a>
-          <a href={`${base}placement/`}>Placement & Hiring</a>
-          <a href={`${base}pricing/`}>Training pricing</a>
-          <a href={`${base}testimonials/`}>Testimonials</a>
-          <a href={`${base}faq/`}>FAQ</a>
-          <a href={`${base}blog/`}>Career blog</a>
+      )}
+
+      {mode !== 'development' && (
+        <div class="has-dropdown">
+          <a href={`${base}courses/`}>IT Training <span class="caret">▾</span></a>
+          <div class="nav-menu">
+            <a href={`${base}courses/`}>All courses</a>
+            <a href={`${base}courses/aws-cloud-architect/`}>AWS Cloud Architect</a>
+            <a href={`${base}courses/data-science-ml/`}>Data Science & ML</a>
+            <a href={`${base}courses/cloud-devops/`}>Cloud & DevOps</a>
+            <a href={`${base}courses/cybersecurity/`}>Cybersecurity</a>
+            <a href={`${base}batches/`}>Upcoming batches</a>
+            <a href={`${base}internship/`}>Internship</a>
+            <a href={`${base}placement/`}>Placement & Hiring</a>
+            <a href={`${base}pricing/#training-plans`}>Training pricing</a>
+            <a href={`${base}testimonials/`}>Testimonials</a>
+            <a href={`${base}faq/`}>FAQ</a>
+            <a href={`${base}blog/`}>Career blog</a>
+          </div>
         </div>
-      </div>
+      )}
+
       <a href={`${base}contact/`}>Contact</a>
+
+      {mode === 'development' && <a class="nav-switch" href={`${base}courses/`}>Looking for IT Training?</a>}
+      {mode === 'training' && <a class="nav-switch" href={`${base}software-development/`}>Need software development?</a>}
+
       <a class="btn outline" href={`${base}login/customer/`}>Customer Login</a>
       <a class="btn" href={`${base}login/student/`}>Student Login</a>
     </nav>
