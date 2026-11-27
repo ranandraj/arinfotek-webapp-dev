@@ -1,0 +1,7 @@
+{
+  "extends": "astro/tsconfigs/basic",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false
+  }
+}
