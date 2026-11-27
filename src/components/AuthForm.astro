@@ -1,6 +1,6 @@
 ---
 const { mode = 'login', role = 'customer' } = Astro.props;
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const isSignup = mode === 'signup';
 ---
 <div class="auth-wrap">
@@ -37,7 +37,7 @@ const isSignup = mode === 'signup';
 
   const form = document.querySelector<HTMLFormElement>('#auth-form')!;
   const msg = document.querySelector<HTMLElement>('#auth-msg')!;
-  const base = import.meta.env.BASE_URL;
+  const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   const mode = form.dataset.mode;
   const role = form.dataset.role ?? 'customer';
 
