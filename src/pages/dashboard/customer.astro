@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Customer Dashboard | AR INFOTEK">
+  <section class="section">
+    <div class="container">
+      <span class="tag">Customer account</span>
+      <h1>Your project dashboard</h1>
+      <div id="gate" class="banner">Checking your session…</div>
+      <div id="content" class="card" style="display:none">
+        <p>Signed in as <strong id="email"></strong></p>
+        <p>Project enquiries and documents will appear here.</p>
+        <button class="btn outline" id="logout" type="button">Log out</button>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { supabase } from '../../lib/supabase';
+  const base = import.meta.env.BASE_URL;
+  const gate = document.querySelector<HTMLElement>('#gate')!;
+  const content = document.querySelector<HTMLElement>('#content')!;
+  const email = document.querySelector<HTMLElement>('#email')!;
+
+  const { data } = await supabase.auth.getUser();
+  if (!data.user) {
+    location.replace(new URL('login/customer/', location.origin + base).toString());
+  } else {
+    email.textContent = data.user.email ?? '';
+    gate.style.display = 'none';
+    content.style.display = 'block';
+  }
+
+  document.querySelector<HTMLButtonElement>('#logout')!.addEventListener('click', async () => {
+    await supabase.auth.signOut();
+    location.href = new URL('', location.origin + base).toString();
+  });
+</script>
