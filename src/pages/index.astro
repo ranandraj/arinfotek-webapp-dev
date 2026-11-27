@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout>
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Software Development · IT Training</span>
+      <h1>Build software. Build your career.</h1>
+      <p>AR INFOTEK now delivers client software projects and live, mentor-led IT training in AI/ML, Cloud, DevOps, Data Science and Cybersecurity.</p>
+      <div class="hero-actions">
+        <a class="btn" href={`${base}software-development/`}>Explore software services</a>
+        <a class="btn ghost" href={`${base}courses/`}>Browse courses</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Two ways to work with us</span>
+      <h2>One company, two focus areas</h2>
+      <div class="grid two">
+        <div class="card">
+          <span class="tag">For businesses</span>
+          <h3>Software Development</h3>
+          <p>Web applications, APIs, cloud deployment and DevOps automation built by the same engineers who train our learners.</p>
+          <a class="btn outline" href={`${base}signup/customer/`}>Create customer account</a>
+        </div>
+        <div class="card">
+          <span class="tag">For learners</span>
+          <h3>IT Training</h3>
+          <p>Small live cohorts, hands-on projects, internships and certificates designed to make you job-ready.</p>
+          <a class="btn outline" href={`${base}signup/student/`}>Create student account</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <span class="eyebrow">Innovation Labs</span>
+      <h2>Learn by building real systems</h2>
+      <div class="grid four">
+        <div class="card"><h3>Generative AI Bot</h3><p>RAG chatbot over company documents using Python and LangChain.</p></div>
+        <div class="card"><h3>Serverless Neo-Bank</h3><p>Event-driven backend with AWS Lambda and DynamoDB streams.</p></div>
+        <div class="card"><h3>GitOps K8s Cluster</h3><p>Automated CI/CD pipelines deploying to Kubernetes.</p></div>
+        <div class="card"><h3>SOC Threat Hunter</h3><p>Live security dashboard with Splunk and Wireshark.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container center">
+      <h2>Ready to get started?</h2>
+      <p>Talk to an advisor or create an account to see your dashboard.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn" href={`${base}contact/`}>Contact us</a>
+        <a class="btn outline" href={`${base}login/student/`}>Student login</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
