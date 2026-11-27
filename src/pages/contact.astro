@@ -1,17 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 <BaseLayout title="Contact | AR INFOTEK" description="Talk to the AR INFOTEK team about software projects or IT training.">
   <section class="section">
     <div class="container">
       <span class="eyebrow">Talk to us</span>
       <h1>Let's discuss your goal</h1>
+      <p>Tell us whether you need a software partner or a career-changing course. We'll get back to you within one working day.</p>
       <div class="grid two">
         <div class="card">
           <h3>Direct contact</h3>
-          <p>Email: admissions@arinfotek.co.in</p>
-          <p>Phone / WhatsApp: +91-9487107253</p>
-          <p>Weekday batches: 7–9 PM IST · Weekend: 10 AM–1 PM IST</p>
+          <p><strong>Email:</strong> admissions@arinfotek.co.in</p>
+          <p><strong>Phone / WhatsApp:</strong> +91-9487107253</p>
+          <p><strong>Weekday batches:</strong> 7–9 PM IST</p>
+          <p><strong>Weekend batches:</strong> 10 AM–1 PM IST</p>
+          <h3 style="margin-top:1.5rem">Office</h3>
+          <p>Remote-first team serving clients and learners across India.</p>
+          <a href={`${base}courses/`}>Explore courses →</a>
         </div>
         <div class="card">
           <h3>Send a message</h3>
@@ -20,10 +26,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <input id="name" name="name" required />
             <label for="email">Email</label>
             <input id="email" name="email" type="email" required />
+            <label for="topic">I'm interested in</label>
+            <select id="topic" name="topic">
+              <option>Software Development</option>
+              <option>IT Training</option>
+              <option>Internship</option>
+              <option>Other</option>
+            </select>
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="4"></textarea>
             <button class="btn" type="submit">Send message</button>
           </form>
+          <p class="small" style="margin-top:1rem">You can also create a <a href={`${base}signup/customer/`}>customer account</a> or <a href={`${base}signup/student/`}>student account</a>.</p>
         </div>
       </div>
     </div>
