@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Signing in | AR INFOTEK">
+  <section class="section">
+    <div class="container">
+      <div class="card auth-card">
+        <h2>Signing you in…</h2>
+        <p id="auth-msg" class="msg">Please wait.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  import { supabase } from '../../lib/supabase';
+
+  const msg = document.querySelector<HTMLElement>('#auth-msg')!;
+  const base = import.meta.env.BASE_URL;
+
+  (async () => {
+    try {
+      if (new URLSearchParams(location.search).has('code')) {
+        const { error } = await supabase.auth.exchangeCodeForSession(location.search);
+        if (error) throw error;
+      }
+      const { data, error } = await supabase.auth.getUser();
+      if (error || !data.user) throw error ?? new Error('No session found.');
+
+      const role = data.user.user_metadata?.role === 'student' ? 'student' : 'customer';
+      location.replace(new URL(`dashboard/${role}/`, location.origin + base).toString());
+    } catch (error) {
+      msg.textContent = error instanceof Error ? error.message : 'Unable to sign in.';
+    }
+  })();
+</script>
