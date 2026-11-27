@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <BaseLayout title="Student Dashboard | AR INFOTEK">
   <section class="section">
@@ -19,7 +19,7 @@ const base = import.meta.env.BASE_URL;
 
 <script>
   import { supabase } from '../../lib/supabase';
-  const base = import.meta.env.BASE_URL;
+  const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
   const gate = document.querySelector<HTMLElement>('#gate')!;
   const content = document.querySelector<HTMLElement>('#content')!;
   const email = document.querySelector<HTMLElement>('#email')!;
