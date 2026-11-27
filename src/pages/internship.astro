@@ -2,6 +2,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const domains = ['AI / ML', 'Cloud Computing', 'Data Science', 'Full Stack Web Development', 'Python', 'Mobile Apps', 'DevOps', 'Vibe Coding'];
+const highlights = [
+  ['Real Projects', 'Work on industry-style assignments instead of theoretical exercises.'],
+  ['Mentor Support', 'Get guidance from working professionals throughout the internship.'],
+  ['Resume Ready', 'Build a portfolio and learn how to present your work in interviews.'],
+  ['Certificate', 'Receive a completion certificate after successful project delivery.'],
+];
 ---
 <BaseLayout title="Internship | AR INFOTEK" description="Internship program 2026 with real projects and mentor support.">
   <section class="hero">
@@ -9,14 +15,46 @@ const domains = ['AI / ML', 'Cloud Computing', 'Data Science', 'Full Stack Web D
       <span class="tag">Internship Program 2026</span>
       <h1>Learn today. Intern tomorrow.</h1>
       <p>Real-world projects, industry exposure, resume building and interview preparation.</p>
-      <a class="btn" href={`${base}signup/student/`}>Register interest</a>
+      <div class="hero-actions">
+        <a class="btn" href={`${base}signup/student/`}>Register interest</a>
+        <a class="btn ghost" href={`${base}contact/`}>Ask a question</a>
+      </div>
     </div>
   </section>
   <section class="section">
     <div class="container">
       <h2>Internship domains</h2>
       <div class="grid four">
-        {domains.map((domain) => <div class="card"><h3>{domain}</h3></div>)}
+        {domains.map((domain) => <div class="card"><h3>{domain}</h3><p>Practical assignment, mentor review and project submission.</p></div>)}
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <h2>Program highlights</h2>
+      <div class="grid four">
+        {highlights.map(([title, text]) => <div class="card"><h3>{title}</h3><p>{text}</p></div>)}
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid two">
+        <div class="card">
+          <h3>Eligibility</h3>
+          <p>Open to BE, BCA, BSc, MCA and diploma students, as well as career switchers with basic programming knowledge.</p>
+          <ul class="checks">
+            <li>Basic computer and internet knowledge</li>
+            <li>Willingness to learn and complete projects</li>
+            <li>Laptop for hands-on practice</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Fee & duration</h3>
+          <p class="price">₹1,999</p>
+          <p>Duration: 4–8 weeks depending on domain and project complexity. Flexible weekday/weekend mentor sessions.</p>
+          <a class="btn" href={`${base}signup/student/`}>Register now</a>
+        </div>
       </div>
     </div>
   </section>
