@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const studentSteps = [
+  ['Profile audit', 'Review resume, LinkedIn, GitHub and portfolio for role fit.'],
+  ['Role mapping', 'Shortlist target roles based on skills, interests and location.'],
+  ['Resume & LinkedIn', 'Rewrite project descriptions with measurable, recruiter-friendly language.'],
+  ['Technical mock', 'Practice coding, concepts and project walkthroughs with a mentor.'],
+  ['HR mock', 'Prepare common behavioural questions, salary discussion and notice-period answers.'],
+  ['Interview loop', 'Track applications, follow-ups and feedback until you get an offer.'],
+];
+const employerSteps = [
+  ['Requirement call', 'Understand role, stack, timeline and budget.'],
+  ['Candidate shortlist', 'Screen learners trained on relevant projects and evaluated by mentors.'],
+  ['Project-based test', 'Use practical assignments instead of only résumé keywords.'],
+  ['Interview & offer', 'Coordinate technical and HR rounds, then support offer closure.'],
+  ['Internship-to-hire', 'Convert high-performing interns into full-time hires with a trial period.'],
+];
+---
+<BaseLayout title="Placement & Hiring Support | AR INFOTEK" description="Dedicated placement and hiring support: resume review, mock interviews, job mapping and employer shortlisting.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Placement & Hiring</span>
+      <h1>Get interview-ready. Get hired.</h1>
+      <p>Placement support is built into the training journey — not added after the course ends. A dedicated placement and hiring advisor works with you on roles, résumé, interviews and applications.</p>
+      <div class="hero-actions">
+        <a class="btn" href={`${base}contact/`}>Talk to placement advisor</a>
+        <a class="btn ghost" href={`${base}courses/`}>Explore courses</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Dedicated expert</span>
+      <h2>Your placement & hiring mentor</h2>
+      <div class="grid two">
+        <div class="card featured">
+          <span class="tag">One point of contact</span>
+          <h3>What the mentor does</h3>
+          <ul class="checks">
+            <li>Audits your résumé, LinkedIn, GitHub and portfolio</li>
+            <li>Maps your skills to realistic job roles</li>
+            <li>Runs technical and HR mock interviews</li>
+            <li>Tracks applications, follow-ups and interview feedback</li>
+            <li>Coordinates with hiring partners and employers</li>
+          </ul>
+          <p class="small">The mentor works with our technical trainers, so interview feedback feeds directly into your next practice session.</p>
+        </div>
+        <div class="card">
+          <h3>90-day placement plan</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Phase</th><th>Focus</th></tr></thead>
+              <tbody>
+                <tr><td>Days 1–15</td><td>Profile audit, role mapping, résumé and LinkedIn rewrite</td></tr>
+                <tr><td>Days 16–45</td><td>Technical mock interviews and project walkthrough practice</td></tr>
+                <tr><td>Days 46–75</td><td>Applications, HR mocks and recruiter conversations</td></tr>
+                <tr><td>Days 76–90</td><td>Offer discussion, follow-ups and backup applications</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="small">Timelines vary by role and market conditions; your mentor sets a personal plan after the first review.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <h2>Student placement workflow</h2>
+      <div class="grid three">
+        {studentSteps.map(([title, text], index) => (
+          <div class="card"><span class="tag">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid two">
+        <div>
+          <span class="eyebrow">For employers</span>
+          <h2>Hiring support that reduces screening time</h2>
+          <p>We help teams find candidates who have already built and defended real projects. Share a role, and we shortlist learners whose training and evaluations match your stack.</p>
+          <div class="grid two">
+            {employerSteps.map(([title, text], index) => (
+              <div class="card"><span class="tag">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2>Talk to the placement team</h2>
+          <LeadForm interest="Placement & Hiring" heading="Placement enquiry" />
+        </div>
+      </div>
+      <p class="small" style="margin-top:1.5rem">See <a href={`${base}faq/`}>placement FAQs</a> and <a href={`${base}testimonials/`}>learner stories</a>.</p>
+    </div>
+  </section>
+</BaseLayout>
