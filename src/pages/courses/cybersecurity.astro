@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const modules = [
+  ['Networking basics', 'TCP/IP, DNS, HTTP, ports and common network attacks.'],
+  ['Threat modelling', 'Assets, attack surfaces, STRIDE and risk prioritisation.'],
+  ['Vulnerability assessment', 'Scanning, triage, reporting and remediation planning.'],
+  ['SIEM & logs', 'Log sources, alert rules, dashboards and case management.'],
+  ['Blue Team labs', 'SQL injection, brute force, phishing analysis and incident response.'],
+  ['Capstone', 'Investigate a simulated incident and present a response report.'],
+];
+---
+<BaseLayout title="Cybersecurity Course | AR INFOTEK" description="10-week live cybersecurity course with SIEM, threat modelling and Blue Team labs.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">10 weeks · Cybersecurity</span>
+      <h1>Defend systems, not just pass exams</h1>
+      <p>A Blue Team-focused program built around logs, threats and real investigation workflows.</p>
+      <div class="hero-actions"><a class="btn" href={`${base}contact/`}>Book a demo class</a><a class="btn ghost" href={`${base}batches/`}>View batches</a></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>What you'll learn</h2>
+      <div class="grid three">
+        {modules.map(([title, text], index) => (
+          <div class="card"><span class="tag">Module {index + 1}</span><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <div class="grid two">
+        <div class="card">
+          <h3>Prerequisites & tools</h3>
+          <ul class="checks">
+            <li>Basic networking and Linux familiarity</li>
+            <li>Curiosity about how attacks work</li>
+            <li>Laptop with 8 GB RAM, virtualisation support and lab access</li>
+          </ul>
+          <h3 style="margin-top:1.5rem">Projects you'll build</h3>
+          <ul class="checks">
+            <li>SIEM dashboard with useful alert rules</li>
+            <li>Vulnerability report with remediation plan</li>
+            <li>Incident investigation write-up</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Batch & fee</h3>
+          <p><strong>Next batch:</strong> 16 Dec · Weekends 10 AM–1 PM IST</p>
+          <p><strong>Group training:</strong> ₹2,999 per course · <strong>1:1 mentoring:</strong> ₹14,999</p>
+          <p class="small">EMI and batch-transfer options are discussed during counselling. Certificate issued after course and capstone completion.</p>
+          <p>Taught by an industry mentor with security operations experience.</p>
+          <a class="btn outline" href={`${base}placement/`}>Placement support</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container"><LeadForm interest="Cybersecurity" heading="Enquire about Cybersecurity" /></div>
+  </section>
+</BaseLayout>
