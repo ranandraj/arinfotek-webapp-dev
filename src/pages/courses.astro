@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL;
 const courses = [
-  { title: 'AWS Cloud Architect', duration: '16 weeks', text: 'VPC, IAM, EC2, load balancing and secure architecture.' },
-  { title: 'Data Science & ML', duration: '14 weeks', text: 'Python, Pandas, machine learning models and MLOps basics.' },
-  { title: 'Cloud & DevOps', duration: '12 weeks', text: 'Docker, Kubernetes, Terraform and CI/CD pipelines.' },
-  { title: 'Cybersecurity', duration: '10 weeks', text: 'Network security, SIEM, threat modelling and Blue Team labs.' },
+  { title: 'AWS Cloud Architect', duration: '16 weeks', mode: 'Weekdays / Weekends', text: 'VPC, IAM, EC2, load balancing, auto scaling and secure multi-tier architecture.' },
+  { title: 'Data Science & ML', duration: '14 weeks', mode: 'Weekdays / Weekends', text: 'Python, Pandas, visualisation, supervised and unsupervised models, model deployment basics.' },
+  { title: 'Cloud & DevOps', duration: '12 weeks', mode: 'Weekdays / Weekends', text: 'Linux, Docker, Kubernetes, Terraform, GitHub Actions and end-to-end CI/CD pipelines.' },
+  { title: 'Cybersecurity', duration: '10 weeks', mode: 'Weekdays / Weekends', text: 'Network security, SIEM, threat modelling, vulnerability assessment and Blue Team labs.' },
 ];
 ---
 <BaseLayout title="Courses | AR INFOTEK" description="Live instructor-led IT training courses in cloud, DevOps, data science and security.">
@@ -14,21 +14,43 @@ const courses = [
       <span class="tag">IT Training</span>
       <h1>In-demand tech skills, taught live</h1>
       <p>Small cohorts, practical projects and mentor support. Weekday and weekend batches.</p>
-      <a class="btn" href={`${base}signup/student/`}>Join as a student</a>
+      <div class="hero-actions">
+        <a class="btn" href={`${base}signup/student/`}>Join as a student</a>
+        <a class="btn ghost" href={`${base}batches/`}>View upcoming batches</a>
+      </div>
     </div>
   </section>
   <section class="section">
     <div class="container">
-      <div class="grid four">
+      <h2>Course catalog</h2>
+      <div class="grid two">
         {courses.map((course) => (
           <div class="card">
             <span class="tag">{course.duration}</span>
             <h3>{course.title}</h3>
             <p>{course.text}</p>
-            <a href={`${base}contact/`}>Enquire →</a>
+            <p class="small"><strong>Schedule:</strong> {course.mode}</p>
+            <ul class="checks">
+              <li>Live interactive sessions with industry mentors</li>
+              <li>Hands-on labs and real-world capstone projects</li>
+              <li>Completion certificate and career guidance</li>
+            </ul>
+            <a class="btn outline" href={`${base}contact/`}>Enquire now</a>
           </div>
         ))}
       </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <h2>How the program works</h2>
+      <div class="grid four">
+        <div class="card"><span class="tag">01</span><h3>Counselling</h3><p>Choose the right track based on your background and career goal.</p></div>
+        <div class="card"><span class="tag">02</span><h3>Live classes</h3><p>Attend interactive sessions and work through guided labs.</p></div>
+        <div class="card"><span class="tag">03</span><h3>Capstone</h3><p>Build and present a project that solves a real problem.</p></div>
+        <div class="card"><span class="tag">04</span><h3>Certification</h3><p>Receive your certificate and interview-ready portfolio.</p></div>
+      </div>
+      <div class="hero-actions"><a class="btn" href={`${base}pricing/`}>See pricing</a><a class="btn outline" href={`${base}testimonials/`}>Learner stories</a></div>
     </div>
   </section>
 </BaseLayout>
