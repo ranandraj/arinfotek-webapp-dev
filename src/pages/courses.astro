@@ -2,10 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const courses = [
-  { title: 'AWS Cloud Architect', duration: '16 weeks', mode: 'Weekdays / Weekends', text: 'VPC, IAM, EC2, load balancing, auto scaling and secure multi-tier architecture.' },
-  { title: 'Data Science & ML', duration: '14 weeks', mode: 'Weekdays / Weekends', text: 'Python, Pandas, visualisation, supervised and unsupervised models, model deployment basics.' },
-  { title: 'Cloud & DevOps', duration: '12 weeks', mode: 'Weekdays / Weekends', text: 'Linux, Docker, Kubernetes, Terraform, GitHub Actions and end-to-end CI/CD pipelines.' },
-  { title: 'Cybersecurity', duration: '10 weeks', mode: 'Weekdays / Weekends', text: 'Network security, SIEM, threat modelling, vulnerability assessment and Blue Team labs.' },
+  { title: 'AWS Cloud Architect', slug: 'aws-cloud-architect', duration: '16 weeks', text: 'VPC, IAM, EC2, load balancing, auto scaling and secure multi-tier architecture.' },
+  { title: 'Data Science & ML', slug: 'data-science-ml', duration: '14 weeks', text: 'Python, Pandas, visualisation, supervised and unsupervised models, model deployment basics.' },
+  { title: 'Cloud & DevOps', slug: 'cloud-devops', duration: '12 weeks', text: 'Linux, Docker, Kubernetes, Terraform, GitHub Actions and end-to-end CI/CD pipelines.' },
+  { title: 'Cybersecurity', slug: 'cybersecurity', duration: '10 weeks', text: 'Network security, SIEM, threat modelling, vulnerability assessment and Blue Team labs.' },
 ];
 ---
 <BaseLayout title="Courses | AR INFOTEK" description="Live instructor-led IT training courses in cloud, DevOps, data science and security.">
@@ -29,13 +29,12 @@ const courses = [
             <span class="tag">{course.duration}</span>
             <h3>{course.title}</h3>
             <p>{course.text}</p>
-            <p class="small"><strong>Schedule:</strong> {course.mode}</p>
             <ul class="checks">
-              <li>Live interactive sessions with industry mentors</li>
-              <li>Hands-on labs and real-world capstone projects</li>
-              <li>Completion certificate and career guidance</li>
+              <li>Week-by-week syllabus and live labs</li>
+              <li>Capstone project and certificate</li>
+              <li>Placement and hiring support</li>
             </ul>
-            <a class="btn outline" href={`${base}contact/`}>Enquire now</a>
+            <a class="btn outline" href={`${base}courses/${course.slug}/`}>View syllabus & fees</a>
           </div>
         ))}
       </div>
@@ -48,9 +47,9 @@ const courses = [
         <div class="card"><span class="tag">01</span><h3>Counselling</h3><p>Choose the right track based on your background and career goal.</p></div>
         <div class="card"><span class="tag">02</span><h3>Live classes</h3><p>Attend interactive sessions and work through guided labs.</p></div>
         <div class="card"><span class="tag">03</span><h3>Capstone</h3><p>Build and present a project that solves a real problem.</p></div>
-        <div class="card"><span class="tag">04</span><h3>Certification</h3><p>Receive your certificate and interview-ready portfolio.</p></div>
+        <div class="card"><span class="tag">04</span><h3>Placement</h3><p>Work with a hiring mentor on profile, interviews and applications.</p></div>
       </div>
-      <div class="hero-actions"><a class="btn" href={`${base}pricing/`}>See pricing</a><a class="btn outline" href={`${base}testimonials/`}>Learner stories</a></div>
+      <div class="hero-actions"><a class="btn" href={`${base}pricing/`}>See pricing</a><a class="btn outline" href={`${base}placement/`}>Placement support</a></div>
     </div>
   </section>
 </BaseLayout>
