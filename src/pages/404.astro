@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Page Not Found | AR INFOTEK" description="The page you requested was not found.">
+  <section class="section">
+    <div class="container center">
+      <span class="eyebrow">404</span>
+      <h1>That page isn't here</h1>
+      <p>The link may be outdated, or the page may have moved. Use the links below to find what you need.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn" href={base}>Home</a>
+        <a class="btn outline" href={`${base}courses/`}>Courses</a>
+        <a class="btn outline" href={`${base}contact/`}>Contact</a>
+      </div>
+      <div class="grid three" style="margin-top:2rem;text-align:left">
+        <div class="card"><h3>Training</h3><p><a href={`${base}courses/`}>Courses</a> · <a href={`${base}batches/`}>Batches</a> · <a href={`${base}pricing/`}>Pricing</a></p></div>
+        <div class="card"><h3>Business</h3><p><a href={`${base}software-development/`}>Software services</a> · <a href={`${base}contact/`}>Request a quote</a></p></div>
+        <div class="card"><h3>Accounts</h3><p><a href={`${base}login/customer/`}>Customer login</a> · <a href={`${base}login/student/`}>Student login</a></p></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
