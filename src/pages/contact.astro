@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <BaseLayout title="Contact | AR INFOTEK" description="Talk to the AR INFOTEK team about software projects or IT training.">
   <section class="section">
