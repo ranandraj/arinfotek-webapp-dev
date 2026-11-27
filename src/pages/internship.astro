@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL;
+const domains = ['AI / ML', 'Cloud Computing', 'Data Science', 'Full Stack Web Development', 'Python', 'Mobile Apps', 'DevOps', 'Vibe Coding'];
+---
+<BaseLayout title="Internship | AR INFOTEK" description="Internship program 2026 with real projects and mentor support.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Internship Program 2026</span>
+      <h1>Learn today. Intern tomorrow.</h1>
+      <p>Real-world projects, industry exposure, resume building and interview preparation.</p>
+      <a class="btn" href={`${base}signup/student/`}>Register interest</a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>Internship domains</h2>
+      <div class="grid four">
+        {domains.map((domain) => <div class="card"><h3>{domain}</h3></div>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
