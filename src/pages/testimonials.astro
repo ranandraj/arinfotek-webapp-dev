@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const testimonials = [
   { name: 'Harish Kumar', role: 'Cloud Engineer @ StartupX', text: 'The AWS labs on VPC, IAM and load balancing helped me design and deploy a production-ready architecture. The mentor explained every decision clearly.' },
   { name: 'Vikram Rao', role: 'Data Analyst @ RetailCorp', text: 'Python, Pandas and model building gave me true end-to-end data science skills. I built a sales prediction project that became part of my portfolio.' },
