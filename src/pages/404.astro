@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 ---
 <BaseLayout title="Page Not Found | AR INFOTEK" description="The page you requested was not found.">
   <section class="section">
