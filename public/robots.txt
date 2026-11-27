@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ranandraj.github.io/arinfotek-webapp-dev/sitemap.xml
