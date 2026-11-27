@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const plans = [
   { name: 'Group Training', price: '₹2,999', note: 'per course', features: ['Live cohort classes', 'Hands-on labs', 'Capstone project', 'Completion certificate'] },
   { name: '1:1 Mentoring', price: '₹14,999', note: 'per course', features: ['Personal mentor', 'Flexible schedule', 'Custom project plan', 'Resume & interview prep'] },
