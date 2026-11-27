@@ -6,18 +6,19 @@ const plans = [
   { name: '1:1 Mentoring', price: '₹14,999', note: 'per course', features: ['Personal mentor', 'Flexible schedule', 'Custom project plan', 'Resume & interview prep'] },
   { name: 'Long-Term Mentorship', price: '₹24,999', note: '6 months', features: ['Multiple courses', 'Career roadmap', 'Mock interviews', 'Portfolio review'] },
 ];
-const software = [
-  { name: 'Starter Website', price: 'Custom quote', features: ['Responsive 5–8 pages', 'Contact form', 'Basic SEO setup'] },
-  { name: 'Business Application', price: 'Custom quote', features: ['Dashboard & auth', 'API and database', 'Cloud deployment'] },
-  { name: 'Enterprise Solution', price: 'Custom quote', features: ['Architecture design', 'Integrations', 'Ongoing support'] },
+const factors = [
+  ['Scope', 'Number of screens, workflows, integrations and data models.'],
+  ['Quality bar', 'Testing, security review, documentation and accessibility.'],
+  ['Timeline', 'Parallel work and aggressive deadlines change resourcing.'],
+  ['Support', 'Launch monitoring, maintenance and future enhancements.'],
 ];
 ---
-<BaseLayout title="Pricing | AR INFOTEK" description="Transparent pricing for training, mentoring and software development services.">
+<BaseLayout title="Pricing | AR INFOTEK" description="Training prices and scope-based software engagement pricing at AR INFOTEK.">
   <section class="hero">
     <div class="container">
       <span class="tag">Transparent Pricing</span>
       <h1>Clear plans. Real value.</h1>
-      <p>Choose a learning plan or request a custom software quote.</p>
+      <p>Training prices are published below. Software projects are quoted after discovery so the scope, milestones and deliverables are clear.</p>
     </div>
   </section>
   <section class="section">
@@ -34,20 +35,32 @@ const software = [
           </div>
         ))}
       </div>
+      <p class="small">EMI and batch-transfer options are discussed during counselling. Internship program: ₹1,999.</p>
     </div>
   </section>
   <section class="section alt">
     <div class="container">
-      <h2>Software development</h2>
-      <div class="grid three">
-        {software.map((item) => (
-          <div class="card">
-            <h3>{item.name}</h3>
-            <div class="price" style="font-size:1.4rem">{item.price}</div>
-            <ul class="checks">{item.features.map((feature) => <li>{feature}</li>)}</ul>
-            <a class="btn" href={`${base}contact/`}>Request quote</a>
+      <h2>Software development pricing</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>Fixed-scope quote</h3>
+          <p>We agree deliverables, timeline and price after a short discovery call. No hidden hourly surprises.</p>
+          <ul class="checks">
+            <li>Written scope and milestone plan</li>
+            <li>Demo at each milestone</li>
+            <li>Code review and documentation</li>
+            <li>NDA and code ownership terms in the proposal</li>
+            <li>Support and maintenance options after launch</li>
+          </ul>
+          <a class="btn" href={`${base}contact/`}>Request a quote</a>
+        </div>
+        <div class="card">
+          <h3>What affects the quote</h3>
+          <div class="grid two">
+            {factors.map(([title, text]) => <div><h3>{title}</h3><p>{text}</p></div>)}
           </div>
-        ))}
+          <p class="small">See <a href={`${base}case-studies/`}>representative engagements</a> for example scope patterns.</p>
+        </div>
       </div>
     </div>
   </section>
