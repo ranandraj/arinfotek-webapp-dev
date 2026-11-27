@@ -1,6 +1,15 @@
 ---
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const year = new Date().getFullYear();
+const path = Astro.url.pathname;
+const relativePath = path.startsWith(base) ? `/${path.slice(base.length)}` : path;
+const trainingPrefixes = ['/courses/', '/batches/', '/internship/', '/placement/', '/testimonials/', '/faq/', '/blog/', '/signup/student/', '/login/student/', '/dashboard/student/'];
+const developmentPrefixes = ['/software-development/', '/case-studies/', '/signup/customer/', '/login/customer/', '/dashboard/customer/', '/contact/'];
+const mode = trainingPrefixes.some((prefix) => relativePath.startsWith(prefix))
+  ? 'training'
+  : developmentPrefixes.some((prefix) => relativePath.startsWith(prefix))
+    ? 'development'
+    : 'home';
 ---
 <footer class="site-footer">
   <div class="container footer-grid">
@@ -9,23 +18,30 @@ const year = new Date().getFullYear();
       <p class="small">Software development and practical, mentor-led IT training.</p>
       <p class="small">admissions@arinfotek.co.in<br />+91-9487107253</p>
     </div>
-    <div>
-      <h4>IT Training</h4>
-      <p class="small"><a href={`${base}courses/`}>Courses</a></p>
-      <p class="small"><a href={`${base}batches/`}>Upcoming batches</a></p>
-      <p class="small"><a href={`${base}internship/`}>Internship</a></p>
-      <p class="small"><a href={`${base}placement/`}>Placement & Hiring</a></p>
-      <p class="small"><a href={`${base}testimonials/`}>Testimonials</a></p>
-      <p class="small"><a href={`${base}faq/`}>FAQ</a></p>
-      <p class="small"><a href={`${base}blog/`}>Career blog</a></p>
-    </div>
-    <div>
-      <h4>Software Development</h4>
-      <p class="small"><a href={`${base}software-development/`}>Software Development</a></p>
-      <p class="small"><a href={`${base}case-studies/`}>Case Studies</a></p>
-      <p class="small"><a href={`${base}pricing/`}>Pricing</a></p>
-      <p class="small"><a href={`${base}contact/`}>Request a quote</a></p>
-    </div>
+
+    {mode !== 'development' && (
+      <div>
+        <h4>IT Training</h4>
+        <p class="small"><a href={`${base}courses/`}>Courses</a></p>
+        <p class="small"><a href={`${base}batches/`}>Upcoming batches</a></p>
+        <p class="small"><a href={`${base}internship/`}>Internship</a></p>
+        <p class="small"><a href={`${base}placement/`}>Placement & Hiring</a></p>
+        <p class="small"><a href={`${base}testimonials/`}>Testimonials</a></p>
+        <p class="small"><a href={`${base}faq/`}>FAQ</a></p>
+        <p class="small"><a href={`${base}blog/`}>Career blog</a></p>
+      </div>
+    )}
+
+    {mode !== 'training' && (
+      <div>
+        <h4>Software Development</h4>
+        <p class="small"><a href={`${base}software-development/`}>Software Development</a></p>
+        <p class="small"><a href={`${base}case-studies/`}>Case Studies</a></p>
+        <p class="small"><a href={`${base}pricing/`}>Pricing</a></p>
+        <p class="small"><a href={`${base}contact/`}>Request a quote</a></p>
+      </div>
+    )}
+
     <div>
       <h4>Accounts</h4>
       <p class="small"><a href={`${base}signup/customer/`}>Customer signup</a></p>
@@ -34,5 +50,9 @@ const year = new Date().getFullYear();
       <p class="small"><a href={`${base}login/student/`}>Student login</a></p>
     </div>
   </div>
-  <div class="container small">© {year} AR INFOTEK. All rights reserved.</div>
+  <div class="container small">
+    © {year} AR INFOTEK. All rights reserved.
+    {mode === 'development' && <> · <a href={`${base}courses/`}>Looking for IT Training?</a></>}
+    {mode === 'training' && <> · <a href={`${base}software-development/`}>Need software development?</a></>}
+  </div>
 </footer>
