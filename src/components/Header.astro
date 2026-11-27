@@ -1,0 +1,19 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href={base}>
+      <img src={`${base}favicon.svg`} alt="AR INFOTEK" />
+      <span>AR INFOTEK</span>
+    </a>
+    <nav class="nav">
+      <a href={`${base}software-development/`}>Software Development</a>
+      <a href={`${base}courses/`}>Courses</a>
+      <a href={`${base}internship/`}>Internship</a>
+      <a href={`${base}contact/`}>Contact</a>
+      <a class="btn outline" href={`${base}login/customer/`}>Customer Login</a>
+      <a class="btn" href={`${base}login/student/`}>Student Login</a>
+    </nav>
+  </div>
+</header>
