@@ -1,0 +1,29 @@
+---
+const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>AR INFOTEK</h4>
+      <p class="small">Software development and practical, mentor-led IT training.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <p class="small"><a href={`${base}software-development/`}>Software Development</a></p>
+      <p class="small"><a href={`${base}courses/`}>Courses</a></p>
+      <p class="small"><a href={`${base}internship/`}>Internship</a></p>
+    </div>
+    <div>
+      <h4>Accounts</h4>
+      <p class="small"><a href={`${base}signup/customer/`}>Customer signup</a></p>
+      <p class="small"><a href={`${base}signup/student/`}>Student signup</a></p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p class="small">admissions@arinfotek.co.in</p>
+      <p class="small">+91-9487107253</p>
+    </div>
+  </div>
+  <div class="container small">© {year} AR INFOTEK. All rights reserved.</div>
+</footer>
