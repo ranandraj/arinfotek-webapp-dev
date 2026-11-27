@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const modules = [
+  ['Python for data', 'NumPy, Pandas, data cleaning, visualisation and exploratory analysis.'],
+  ['Statistics', 'Probability, distributions, sampling, hypothesis testing and correlation.'],
+  ['Machine learning', 'Regression, classification, clustering, feature engineering and model selection.'],
+  ['Evaluation', 'Metrics, cross-validation, leakage, bias and overfitting.'],
+  ['Deployment basics', 'Packaging models, APIs, containers and monitoring drift.'],
+  ['Capstone', 'End-to-end dataset problem from cleaning to a presented model.'],
+];
+---
+<BaseLayout title="Data Science & ML Course | AR INFOTEK" description="14-week live Data Science and Machine Learning course with Python, model deployment and placement support.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">14 weeks · Data Science & ML</span>
+      <h1>Turn data into decisions</h1>
+      <p>Learn Python, statistics and machine learning by working through real datasets, not just notebook demos.</p>
+      <div class="hero-actions"><a class="btn" href={`${base}contact/`}>Book a demo class</a><a class="btn ghost" href={`${base}batches/`}>View batches</a></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>What you'll learn</h2>
+      <div class="grid three">
+        {modules.map(([title, text], index) => (
+          <div class="card"><span class="tag">Module {index + 1}</span><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <div class="grid two">
+        <div class="card">
+          <h3>Prerequisites & tools</h3>
+          <ul class="checks">
+            <li>Basic maths and comfort with spreadsheets</li>
+            <li>Python fundamentals are helpful; bridge sessions available</li>
+            <li>Laptop with 8 GB RAM, Python, Jupyter and Git</li>
+          </ul>
+          <h3 style="margin-top:1.5rem">Projects you'll build</h3>
+          <ul class="checks">
+            <li>Sales prediction model with evaluation report</li>
+            <li>Customer segmentation dashboard</li>
+            <li>Model served through a simple API</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Batch & fee</h3>
+          <p><strong>Next batch:</strong> 02 Dec · Weekends 10 AM–1 PM IST</p>
+          <p><strong>Group training:</strong> ₹2,999 per course · <strong>1:1 mentoring:</strong> ₹14,999</p>
+          <p class="small">EMI and batch-transfer options are discussed during counselling. Certificate issued after course and capstone completion.</p>
+          <p>Taught by an industry mentor with applied data experience.</p>
+          <a class="btn outline" href={`${base}placement/`}>Placement support</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container"><LeadForm interest="Data Science & ML" heading="Enquire about Data Science & ML" /></div>
+  </section>
+</BaseLayout>
