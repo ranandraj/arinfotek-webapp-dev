@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const domains = ['AI / ML', 'Cloud Computing', 'Data Science', 'Full Stack Web Development', 'Python', 'Mobile Apps', 'DevOps', 'Vibe Coding'];
 const highlights = [
@@ -8,8 +9,20 @@ const highlights = [
   ['Resume Ready', 'Build a portfolio and learn how to present your work in interviews.'],
   ['Certificate', 'Receive a completion certificate after successful project delivery.'],
 ];
+const steps = [
+  ['Apply', 'Share your background, preferred domain and availability.'],
+  ['Counselling', 'Confirm fit, project scope and schedule with a mentor.'],
+  ['Build', 'Complete guided tasks and a final project with mentor reviews.'],
+  ['Review', 'Present your work, get feedback and receive your certificate.'],
+];
+const rubric = [
+  ['Project completion', 'Deliverables submitted on time and documented clearly.'],
+  ['Technical quality', 'Code structure, testing and sensible design decisions.'],
+  ['Communication', 'Weekly updates and a clear final presentation.'],
+  ['Initiative', ['Problem framing', 'Debugging', 'Additional improvements'].join(', ')],
+];
 ---
-<BaseLayout title="Internship | AR INFOTEK" description="Internship program 2026 with real projects and mentor support.">
+<BaseLayout title="Internship | AR INFOTEK" description="Internship program 2026 with real projects, mentor reviews, certificate and placement support.">
   <section class="hero">
     <div class="container">
       <span class="tag">Internship Program 2026</span>
@@ -39,23 +52,40 @@ const highlights = [
   </section>
   <section class="section">
     <div class="container">
+      <h2>Application steps</h2>
+      <div class="grid four">
+        {steps.map(([title, text], index) => <div class="card"><span class="tag">{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></div>)}
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
       <div class="grid two">
         <div class="card">
-          <h3>Eligibility</h3>
-          <p>Open to BE, BCA, BSc, MCA and diploma students, as well as career switchers with basic programming knowledge.</p>
-          <ul class="checks">
-            <li>Basic computer and internet knowledge</li>
-            <li>Willingness to learn and complete projects</li>
-            <li>Laptop for hands-on practice</li>
-          </ul>
+          <h3>How you are evaluated</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Criteria</th><th>What we look for</th></tr></thead>
+              <tbody>
+                {rubric.map(([title, text]) => <tr><td>{title}</td><td>{text}</td></tr>)}
+              </tbody>
+            </table>
+          </div>
+          <p class="small">Stipend availability depends on the project and performance; discuss this during counselling. A completion certificate is issued after successful delivery.</p>
         </div>
         <div class="card">
-          <h3>Fee & duration</h3>
-          <p class="price">₹1,999</p>
-          <p>Duration: 4–8 weeks depending on domain and project complexity. Flexible weekday/weekend mentor sessions.</p>
+          <h3>Eligibility & fee</h3>
+          <p>Open to BE, BCA, BSc, MCA and diploma students, as well as career switchers with basic programming knowledge.</p>
+          <div class="price">₹1,999</div>
+          <p>Duration: 4–8 weeks depending on domain and project complexity. Flexible weekday/weekend mentor sessions. Ask about batch transfers before enrolment.</p>
           <a class="btn" href={`${base}signup/student/`}>Register now</a>
         </div>
       </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <LeadForm interest="Internship" heading="Internship enquiry" />
     </div>
   </section>
 </BaseLayout>
