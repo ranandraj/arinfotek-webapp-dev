@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LeadForm from '../components/LeadForm.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const studies = [
+  {
+    title: 'Internal operations dashboard',
+    type: 'Business application',
+    problem: 'Manual spreadsheets made it hard for a team to track requests, ownership and turnaround time.',
+    approach: 'Role-based dashboard, request workflow, audit trail and simple reporting built as a phased release.',
+    stack: 'Astro, REST API, PostgreSQL, cloud hosting',
+    timeline: '6 weeks',
+    outcome: 'One source of truth for requests and faster weekly reviews.',
+  },
+  {
+    title: 'Document intelligence assistant',
+    type: 'AI integration',
+    problem: 'Important information was buried in PDFs and repeated questions consumed staff time.',
+    approach: 'RAG assistant over company documents with citations, access control and a feedback loop.',
+    stack: 'Python, LangChain, vector database, OpenAI',
+    timeline: '8 weeks',
+    outcome: 'Staff could find answers in natural language with source references.',
+  },
+  {
+    title: 'Deployment pipeline modernisation',
+    type: 'Cloud & DevOps',
+    problem: 'Releases were manual, inconsistent and difficult to debug.',
+    approach: 'Containerised services, automated tests, CI/CD pipeline and environment promotion flow.',
+    stack: 'Docker, GitHub Actions, Kubernetes, Terraform',
+    timeline: '5 weeks',
+    outcome: 'Repeatable deployments with clearer rollback and monitoring.',
+  },
+];
+---
+<BaseLayout title="Case Studies | AR INFOTEK" description="Representative software engagements showing problem, approach, stack and outcomes.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Case Studies</span>
+      <h1>How we think about real problems</h1>
+      <p>These are representative engagement patterns based on the types of systems we design and teach. Share your requirement and we will prepare a scoped plan.</p>
+      <a class="btn" href={`${base}contact/`}>Discuss your project</a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid three">
+        {studies.map((study) => (
+          <div class="card">
+            <span class="tag">{study.type}</span>
+            <h3>{study.title}</h3>
+            <p><strong>Problem:</strong> {study.problem}</p>
+            <p><strong>Approach:</strong> {study.approach}</p>
+            <p><strong>Stack:</strong> {study.stack}</p>
+            <p><strong>Timeline:</strong> {study.timeline}</p>
+            <p><strong>Outcome:</strong> {study.outcome}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section alt">
+    <div class="container">
+      <div class="grid two">
+        <div>
+          <h2>What every engagement includes</h2>
+          <ul class="checks">
+            <li>Discovery call and written scope</li>
+            <li>Milestone-based delivery with demos</li>
+            <li>Code review and documentation</li>
+            <li>NDA and code ownership terms available in the proposal</li>
+            <li>Support and maintenance options after launch</li>
+          </ul>
+          <p>Read <a href={`${base}software-development/`}>software services</a> and <a href={`${base}pricing/`}>engagement models</a>.</p>
+        </div>
+        <LeadForm interest="Software Development" heading="Start a project conversation" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
