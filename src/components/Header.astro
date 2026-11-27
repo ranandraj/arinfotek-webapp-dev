@@ -4,15 +4,35 @@ const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 <header class="site-header">
   <div class="container nav-wrap">
     <a class="brand" href={base}>
-      <img src={`${base}logo.png`} onerror={`this.onerror=null;this.src='${base}favicon.svg'`} alt="AR INFOTEK" />
+      <img src={`${base}logo.webp`} onerror={`this.onerror=null;this.src='${base}logo.png'`} alt="AR INFOTEK" />
     </a>
     <nav class="nav">
-      <a href={`${base}software-development/`}>Software Development</a>
-      <a href={`${base}courses/`}>Courses</a>
-      <a href={`${base}batches/`}>Batches</a>
-      <a href={`${base}pricing/`}>Pricing</a>
-      <a href={`${base}internship/`}>Internship</a>
-      <a href={`${base}testimonials/`}>Testimonials</a>
+      <div class="has-dropdown">
+        <a href={`${base}courses/`}>Training <span class="caret">▾</span></a>
+        <div class="nav-menu">
+          <a href={`${base}courses/`}>All courses</a>
+          <a href={`${base}courses/aws-cloud-architect/`}>AWS Cloud Architect</a>
+          <a href={`${base}courses/data-science-ml/`}>Data Science & ML</a>
+          <a href={`${base}courses/cloud-devops/`}>Cloud & DevOps</a>
+          <a href={`${base}courses/cybersecurity/`}>Cybersecurity</a>
+          <a href={`${base}batches/`}>Upcoming batches</a>
+          <a href={`${base}internship/`}>Internship</a>
+          <a href={`${base}placement/`}>Placement & Hiring</a>
+          <a href={`${base}pricing/`}>Pricing</a>
+          <a href={`${base}testimonials/`}>Testimonials</a>
+          <a href={`${base}faq/`}>FAQ</a>
+          <a href={`${base}blog/`}>Career blog</a>
+        </div>
+      </div>
+      <div class="has-dropdown">
+        <a href={`${base}software-development/`}>Business <span class="caret">▾</span></a>
+        <div class="nav-menu">
+          <a href={`${base}software-development/`}>Software Development</a>
+          <a href={`${base}case-studies/`}>Case Studies</a>
+          <a href={`${base}pricing/`}>Pricing</a>
+          <a href={`${base}contact/`}>Request a Quote</a>
+        </div>
+      </div>
       <a href={`${base}contact/`}>Contact</a>
       <a class="btn outline" href={`${base}login/customer/`}>Customer Login</a>
       <a class="btn" href={`${base}login/student/`}>Student Login</a>
