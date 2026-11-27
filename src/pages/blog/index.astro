@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const posts = [
+  { slug: 'choose-cloud-career', title: 'How to choose between Cloud, DevOps and Data Science', date: '20 Nov 2026', read: '6 min', tag: 'Career' },
+  { slug: 'portfolio-that-gets-interviews', title: 'Build a portfolio that gets interviews', date: '12 Nov 2026', read: '5 min', tag: 'Placement' },
+  { slug: 'internship-checklist', title: 'A checklist before you join an internship', date: '04 Nov 2026', read: '4 min', tag: 'Internship' },
+];
+---
+<BaseLayout title="Career Blog | AR INFOTEK" description="Practical career guidance for learners in cloud, DevOps, data science and cybersecurity.">
+  <section class="hero">
+    <div class="container">
+      <span class="tag">Career Blog</span>
+      <h1>Advice that helps you move forward</h1>
+      <p>Short, practical guides written for technology learners and early-career engineers.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid three">
+        {posts.map((post) => (
+          <div class="card">
+            <span class="tag">{post.tag}</span>
+            <h3><a href={`${base}blog/${post.slug}/`}>{post.title}</a></h3>
+            <p class="small">{post.date} · {post.read} read</p>
+            <a href={`${base}blog/${post.slug}/`}>Read article →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
