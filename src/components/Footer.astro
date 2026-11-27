@@ -34,8 +34,8 @@ const mode = trainingPrefixes.some((prefix) => relativePath.startsWith(prefix))
 
     {mode !== 'training' && (
       <div>
-        <h4>Software Development</h4>
-        <p class="small"><a href={`${base}software-development/`}>Software Development</a></p>
+        <h4>Product Development</h4>
+        <p class="small"><a href={`${base}software-development/`}>Product Development</a></p>
         <p class="small"><a href={`${base}case-studies/`}>Case Studies</a></p>
         <p class="small"><a href={`${base}pricing/`}>Pricing</a></p>
         <p class="small"><a href={`${base}contact/`}>Request a quote</a></p>
@@ -69,6 +69,6 @@ const mode = trainingPrefixes.some((prefix) => relativePath.startsWith(prefix))
   <div class="container small">
     © {year} AR INFOTEK. All rights reserved.
     {mode === 'development' && <> · <a href={`${base}courses/`}>Looking for IT Training?</a></>}
-    {mode === 'training' && <> · <a href={`${base}software-development/`}>Need software development?</a></>}
+    {mode === 'training' && <> · <a href={`${base}software-development/`}>Need product development?</a></>}
   </div>
 </footer>
