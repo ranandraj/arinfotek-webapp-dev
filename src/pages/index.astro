@@ -9,10 +9,10 @@ const batches = [
 const reasons = [
   ['Live & Interactive', 'Ask doubts live and collaborate with mentors and peers in real time.'],
   ['Project-First', 'Ship apps, dashboards and deployments you can show in interviews.'],
-  ['Industry Experts', 'Learn from senior professionals with real-world delivery experience.'],
+  ['Industry Experts', 'Learn from working professionals with real-world delivery experience.'],
   ['Small Cohorts', 'Dedicated mentor attention and accountability throughout the course.'],
   ['Flexible Schedules', 'Weekday and weekend batches designed around your routine.'],
-  ['Certificates', 'Get recognised for every skill you master with a completion certificate.'],
+  ['Placement Support', 'A hiring mentor helps with your profile, interviews and applications.'],
 ];
 const labs = [
   ['Generative AI Bot', 'RAG chatbot over company PDFs using OpenAI, LangChain and vector databases.'],
@@ -20,10 +20,10 @@ const labs = [
   ['GitOps K8s Cluster', 'Automated pipeline from GitHub push to zero-downtime Kubernetes deployment.'],
   ['SOC Threat Hunter', 'Live dashboard detecting SQL injection, DDoS and unauthorised access.'],
 ];
-const testimonials = [
-  ['Harish Kumar', 'Cloud Engineer @ StartupX', 'The AWS labs on VPC and IAM helped me design and deploy a production-ready architecture.'],
-  ['Vikram Rao', 'Data Analyst @ RetailCorp', 'Python, Pandas and model building gave me true end-to-end data science skills.'],
-  ['Neha Sharma', 'DevOps Engineer @ FinTechCo', 'Docker, Kubernetes and CI/CD practice made real deployments feel easy.'],
+const studies = [
+  ['Operations dashboard', 'Workflow, role-based access and reporting built as a phased release.'],
+  ['Document assistant', 'RAG assistant over PDFs with citations and access control.'],
+  ['Pipeline modernisation', 'Containers, automated tests and repeatable deployments.'],
 ];
 ---
 <BaseLayout>
@@ -37,10 +37,10 @@ const testimonials = [
         <a class="btn ghost" href={`${base}courses/`}>Browse courses</a>
       </div>
       <div class="grid four" style="margin-top:3rem">
-        <div><div class="stat">3k+</div><div class="stat-label">Learners trained</div></div>
-        <div><div class="stat">4.8/5</div><div class="stat-label">Average rating</div></div>
-        <div><div class="stat">100%</div><div class="stat-label">Practical sessions</div></div>
-        <div><div class="stat">8</div><div class="stat-label">Internship domains</div></div>
+        <div><div class="stat">Live</div><div class="stat-label">Mentor-led sessions</div></div>
+        <div><div class="stat">Real</div><div class="stat-label">Projects and labs</div></div>
+        <div><div class="stat">Small</div><div class="stat-label">Cohort sizes</div></div>
+        <div><div class="stat">Flexible</div><div class="stat-label">Weekday & weekend</div></div>
       </div>
     </div>
   </section>
@@ -59,7 +59,7 @@ const testimonials = [
             <li>Agile delivery with clear milestones</li>
             <li>Secure, maintainable and documented code</li>
           </ul>
-          <a class="btn outline" href={`${base}software-development/`}>See our services</a>
+          <a class="btn outline" href={`${base}case-studies/`}>See example engagements</a>
         </div>
         <div class="card">
           <span class="tag">For learners</span>
@@ -113,12 +113,49 @@ const testimonials = [
 
   <section class="section alt">
     <div class="container">
+      <div class="grid two">
+        <div>
+          <span class="eyebrow">Placement & Hiring</span>
+          <h2>Support that continues after the course</h2>
+          <p>A dedicated placement and hiring advisor reviews your profile, runs technical and HR mock interviews, tracks applications and coordinates with hiring partners.</p>
+          <ul class="checks">
+            <li>Résumé, LinkedIn and GitHub review</li>
+            <li>Technical and HR mock interviews</li>
+            <li>Application tracking and follow-ups</li>
+            <li>Employer shortlisting and internship-to-hire support</li>
+          </ul>
+          <div class="hero-actions"><a class="btn" href={`${base}placement/`}>See placement program</a><a class="btn outline" href={`${base}faq/`}>Read FAQs</a></div>
+        </div>
+        <div class="card featured">
+          <span class="tag">90-day plan</span>
+          <h3>From profile to offer</h3>
+          <p>Days 1–15: profile audit and role mapping. Days 16–45: technical mocks. Days 46–75: applications and HR mocks. Days 76–90: offers and follow-ups.</p>
+          <p class="small">Timelines depend on role and market conditions; your mentor sets a personal plan after the first review.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
       <span class="eyebrow">Innovation Labs</span>
       <h2>Learn by building real systems</h2>
       <p>Every learner works through four industry-style projects from scratch.</p>
       <div class="grid four">
         {labs.map(([title, text]) => (
           <div class="card"><h3>{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <span class="eyebrow">Representative engagements</span>
+      <h2>How we approach client problems</h2>
+      <div class="grid three">
+        {studies.map(([title, text]) => (
+          <div class="card"><h3>{title}</h3><p>{text}</p><a href={`${base}case-studies/`}>Read the pattern →</a></div>
         ))}
       </div>
     </div>
@@ -151,14 +188,11 @@ const testimonials = [
       <span class="eyebrow">Learner stories</span>
       <h2>What our learners say</h2>
       <div class="grid three">
-        {testimonials.map(([name, role, quote]) => (
-          <div class="card">
-            <p class="quote">“{quote}”</p>
-            <div class="who">{name}</div>
-            <p class="small">{role}</p>
-          </div>
-        ))}
+        <div class="card"><p class="quote">“The AWS labs on VPC and IAM helped me design and deploy a production-ready architecture.”</p><div class="who">Harish Kumar</div><p class="small">Cloud Engineer @ StartupX</p></div>
+        <div class="card"><p class="quote">“Python, Pandas and model building gave me true end-to-end data science skills.”</p><div class="who">Vikram Rao</div><p class="small">Data Analyst @ RetailCorp</p></div>
+        <div class="card"><p class="quote">“Docker, Kubernetes and CI/CD practice made real deployments feel easy.”</p><div class="who">Neha Sharma</div><p class="small">DevOps Engineer @ FinTechCo</p></div>
       </div>
+      <p style="margin-top:1.5rem"><a href={`${base}testimonials/`}>Read all stories</a> · <a href={`${base}blog/`}>Career blog</a></p>
     </div>
   </section>
 
